@@ -429,10 +429,10 @@ BSP_StatusTypeDef BSP_HandingCmdFromDriverBoard(pPROTOCOLCMD pRequestCmd)
                if(0xB2 == pRequestCmd->CmdType)
                {
                   pRequestCmd->AckCodeH   = 0x02;
-                  if(gMotorMachine.HorizontalRasterState && 0 == gMotorMachine.RunningState)
+                  if(0 == gMotorMachine.RunningState)
                   {
-                    gMotorMachine.OpenFlag  = 1;
-                    gMotorMachine.CloseFlag = 0;
+                      gMotorMachine.OpenFlag  = 1;
+                      gMotorMachine.CloseFlag = 0;
                   }
                }
                break;

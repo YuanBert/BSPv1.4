@@ -204,37 +204,42 @@ BSP_StatusTypeDef BSP_MotorCheck(void)
 {
   BSP_StatusTypeDef state  = BSP_OK;
   
+  //使用遥控时，退出
   if(gMotorMachine.RemoteControFlag)
   {
     return state;
   }
   
+  //垂直位置
   if(gMotorMachine.VerticalRasterState && 0 == gMotorMachine.HorizontalRasterState)
   {
-    if(1 == gMotorMachine.CloseFlag)
+    if(gMotorMachine.GentleSensorFlag)
+    {
+      return state;
+    }
+    
+    if(gMotorMachine.OpenFlag)
+    {
+      HAL_Delay(100);
+      gMotorMachine.OpenFlag = 0;
+    }
+    
+    if(1 == gMotorMachine.CloseFlag && 0 == gMotorMachine.RunningState)
     {
       if(DOWNDIR == gMotorMachine.RunDir)
       {
         gMotorMachine.StartFlag = 1;
+        HAL_Delay(100);
         return state;
       }
+      return state;
     }
     
-    if(0 == gMotorMachine.VerticalRasterState && gMotorMachine.HorizontalRasterState)
-    {
-      if(1 == gMotorMachine.OpenFlag)
-      {
-        if( 1 == gMotorMachine.GentleSensorFlag )
-        {
-          return state;
-        }
-        gMotorMachine.OpenFlag  = 0;
-        gMotorMachine.CloseFlag = 1;
-        return state;
-      }
-    }
+    gMotorMachine.OpenFlag  = 0;
+    gMotorMachine.CloseFlag = 1;
+    return state;
   }
-  
+  /* 水平位置 */
   if(0 == gMotorMachine.VerticalRasterState && gMotorMachine.HorizontalRasterState)
   {
     if(gMotorMachine.OpenFlag)
@@ -242,6 +247,7 @@ BSP_StatusTypeDef BSP_MotorCheck(void)
       if(UPDIR == gMotorMachine.RunDir)
       {
         gMotorMachine.StartFlag = 1;
+        gMotorMachine.CloseFlag = 0;
         return state;
       }
     }
@@ -252,25 +258,29 @@ BSP_StatusTypeDef BSP_MotorCheck(void)
       return state;
     }
   }
-  
+  /* 运行位置 */
   if(gMotorMachine.VerticalRasterState && gMotorMachine.HorizontalRasterState)
   {
     if(gMotorMachine.OpenFlag)
     {
-      if(0 == gMotorMachine.RunningState)
+      if(gMotorMachine.RunningState)
       {
-        gMotorMachine.RunDir = UPDIR;
-        gMotorMachine.OpenFlag = 0;
-        gMotorMachine.CloseFlag = 1;
-        gMotorMachine.StartFlag = 1;
+        gMotorMachine.CloseFlag = 0;
         return state;
       }
+      
+      gMotorMachine.RunDir = UPDIR;
+      gMotorMachine.OpenFlag = 1;
+      gMotorMachine.CloseFlag = 0;
+      gMotorMachine.StartFlag = 1;
+      return state;
     }
-    if(1 == gMotorMachine.CloseFlag)
+    
+    if(gMotorMachine.CloseFlag)
     {
       if(gMotorMachine.RunningState)
       {
-        if(gMotorMachine.GentleSensorFlag && gGentleSensorStatusDetection.GpioCheckedFlag)
+        if(gMotorMachine.GentleSensorFlag)
         {
           BSP_MotorStop();
           gMotorMachine.RunningState = 0;
@@ -278,6 +288,7 @@ BSP_StatusTypeDef BSP_MotorCheck(void)
           gGentleSensorStatusDetection.GpioCheckedFlag = 0;
           return state;
         }
+        return state;
       }
       else
       {
@@ -286,6 +297,16 @@ BSP_StatusTypeDef BSP_MotorCheck(void)
         return state;
       }
     }
+    
+    if(0 == gMotorMachine.RunningState)
+    {
+      gMotorMachine.RunDir = UPDIR;
+      gMotorMachine.OpenFlag = 1;
+      gMotorMachine.CloseFlag = 0;
+      gMotorMachine.StartFlag = 1;    
+      return state;
+    }
+    
   
   }
   return state;
