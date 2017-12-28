@@ -1,7 +1,7 @@
 /**
   ******************************************************************************
-  * File Name          : bsp_protocol.h
-  * Description        : this file is about  protocol
+  * File Name          : bsp_common.h
+  * Description        : 
   *
   ******************************************************************************
   ** This notice applies to any and all portions of this file
@@ -37,94 +37,65 @@
   ******************************************************************************
   */
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __bsp_protocol_H
-#define __bsp_protocol_H
+#ifndef __bsp_common_H
+#define __bsp_common_H
 #ifdef __cplusplus
  extern "C" {
 #endif
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "stm32f1xx_hal.h"
-#include "gpio.h"
-#include "usart.h" 
-#include "bsp_common.h"
    
-#define BSP_CMD_LEN                     5
-#define BSP_RX_LEN                      2048
-#define BSP_DATA_LEN                    2048
-#define REQUESTFIXEDCOMMANDLEN          7               //Header + CmdType + CmdParam + DataLength + XOR8 + End
-#define ACKFIXEDCOMMANDLEN              6               //Header + AckCmdCode + AckCodeH + AckCodeL + XOR8 + End   
-
-
-   
-   /*******************************************************************************
-   ** struct: sUsartReciveType
+   /** enum: BSP_StatusTypeDef
    **
    ** DESCRIPTION:
-   **  --
+   **  --µ¿’¢∞Â∞Â¿‡–Õ
    **
-   ** CREATED: 2017/12/7, by Bert
+   ** CREATED: 2017/12/7, by bert
    **
-   ** FILE: DS_Protocol.h
+   ** FILE: 
    **
    ** AUTHOR: Bert.Zhang
    ********************************************************************************
    */
-   struct sUsartReciveType
+   typedef enum
    {
-     uint8_t     RX_Flag:1;
-     uint16_t    RX_Size;
-     uint8_t     RX_pData[BSP_RX_LEN];
-   };
-   /*******************************************************************************
-   ** struct: sProtocolCmd
-   **
-   ** DESCRIPTION:
-   **  -- new ProtocolCmd 
-   **
-   ** CREATED: 2017/12/27, by Bert
-   **
-   ** FILE: BSP_Protocol.h
-   **
-   ** AUTHOR: Bert.Zhang
-   *****************************************************************************
-   */
-   struct sProtocolCmd
-   {
-     uint8_t     CmdType;
-     uint8_t     CmdParam;
-     uint8_t     DataLengthLow;
-     uint8_t     DataLengthHight;
-     uint8_t     XOR8BIT;
-     uint16_t    DataLength;
-     uint16_t    TotalLength;
-     
-     uint8_t     HandingFlag;
-     uint8_t     AckCmdCode;
-     uint8_t     AckCodeH;
-     uint8_t     AckCodeL;
-     uint8_t     AckXOR8BIT;
-     
-     uint16_t    RevDataCnt;
-     uint8_t     RevOrSendFlag;
-     uint8_t     RevRequestFlag;
-     uint8_t     RevEchoFlag;
-     uint8_t     SendTimesCnt;
-   };
-   
-typedef struct sProtocolCmd     PROTOCOLCMD,            *pPROTOCOLCMD;
-typedef struct sUsartReciveType USARTRECIVETYPE,        *pUSARTRECIVETYPE;
+     BSP_OK       = 0x00U,
+     BSP_ERROR    = 0x01U,
+     BSP_BUSY     = 0x02U,
+     BSP_TIMEOUT  = 0x03U,
+     BSP_NOCMD    = 0x04U
+   }BSP_StatusTypeDef;
 
-BSP_StatusTypeDef       BSP_DriverBoardProtocolInit(void);
-BSP_StatusTypeDef       BSP_SendDataToDriverBoard(uint8_t* pData, uint16_t size, uint32_t Timeout);
-BSP_StatusTypeDef       BSP_SendRequestCmdToDriverBoard(pPROTOCOLCMD pRequestCmd);
-BSP_StatusTypeDef       BSP_AckRequestCmdFromDriverBoard(pPROTOCOLCMD pRequestCmd);
-BSP_StatusTypeDef       BSP_HandingUartDataFromDriverBoard(void);
-BSP_StatusTypeDef       BSP_HandingCmdFromDriverBoard(pPROTOCOLCMD pRequestCmd);
-BSP_StatusTypeDef       BSP_TrySend5TimesCmdToDriverBoard(pPROTOCOLCMD pRequestCmd);
+/*******************************************************************************
+** struct: sGpioStatusDetection
+**
+** DESCRIPTION:
+**  --gpio status 
+**
+** CREATED: 2017/12/26, by bert
+**
+** FILE: 
+**
+** AUTHOR: Bert.Zhang
+********************************************************************************
+*/
+struct sGpioStatusDetection
+{
+  uint8_t   GpioCurrentReadVal;                 //Current GPIO value
+  uint8_t   GpioLastReadVal;                    //Last GPIO value
+  uint8_t   GpioFilterCnt;                      //Filter times
+  uint16_t  GpioFilterCntSum;
+  uint8_t   GpioStatusVal;                      //GPIO true logic state
+  uint8_t   GpioCheckedFlag;                    //vehicle is stilled Flag
+  uint8_t   GpioSendDataFlag;                   //Send data flag,it is zero if data been sent within asingle logic ,
+                                                //and set to one in the next logic
+  uint32_t  GpioValidLogicTimeCnt;              //Gpio vaild logic time counter
+}; 
 
+typedef struct sGpioStatusDetection  GPIOSTATUSDETECTION, *pGPIOSTATUSDETECTION;
 
 #ifdef __cplusplus
 }
 #endif
-#endif /*__bsp_protocol_H */
+#endif /*__bsp_common_H */

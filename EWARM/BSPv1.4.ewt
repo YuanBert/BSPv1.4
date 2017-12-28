@@ -1199,6 +1199,12 @@
                 <name>$PROJ_DIR$\..\Src\adc.c</name>
             </file>
             <file>
+                <name>$PROJ_DIR$\..\Src\bsp_gentlesensor.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\Src\bsp_motor.c</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\Src\bsp_protocol.c</name>
             </file>
             <file>

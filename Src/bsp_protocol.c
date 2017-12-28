@@ -47,6 +47,7 @@
   */
   /* Includes ------------------------------------------------------------------*/
 #include "bsp_protocol.h"
+#include "bsp_motor.h"
 
 uint8_t AckCmdBuffer[6];
 uint8_t DriverBoardCmdBuffer[BSP_CMD_LEN + BSP_DATA_LEN];
@@ -54,7 +55,19 @@ uint8_t DriverBoardCmdBuffer[BSP_CMD_LEN + BSP_DATA_LEN];
 USARTRECIVETYPE     DriverBoardUsartType;
 
 extern PROTOCOLCMD  gDriverBoardProtocolCmd;
+extern MOTORMACHINE gMotorMachine;
 
+static uint8_t getXORCode(uint8_t* pData,uint16_t len)
+{
+  uint8_t ret;
+  uint16_t i;
+  ret = pData[0];
+  for(i = 1; i < len; i++)
+  {
+    ret ^=pData[i];
+  }
+  return ret;
+}
 
 /*******************************************************************************
 *
@@ -84,13 +97,12 @@ static BSP_StatusTypeDef BSP_SendRequestCmd(pPROTOCOLCMD pRequestCmd,uint8_t *pC
     *(pCmdDataBuffer + 4)= pRequestCmd->DataLengthLow;
     dataLength = pRequestCmd->DataLength;
     *(pCmdDataBuffer + REQUESTFIXEDCOMMANDLEN + dataLength - 1) = 0x5D;
-    
+    pRequestCmd->TotalLength = dataLength + REQUESTFIXEDCOMMANDLEN;
     /* Calculate XOR */
-    //tempCRC = CRC16BIT(pCmdDataBuffer + 1, 4 + dataLength);
+    tempXOR = getXORCode(pCmdDataBuffer + 1, pRequestCmd->TotalLength - 3);
     
     *(pCmdDataBuffer + dataLength + REQUESTFIXEDCOMMANDLEN - 2) = (uint8_t)tempXOR;
     
-    pRequestCmd->TotalLength = dataLength + REQUESTFIXEDCOMMANDLEN;
     pRequestCmd->RevOrSendFlag = 1;
     pRequestCmd->RevEchoFlag = 0;
   }
@@ -172,7 +184,10 @@ BSP_StatusTypeDef BSP_SendDataToDriverBoard(uint8_t *pData, uint16_t size,uint32
   BSP_StatusTypeDef state = BSP_OK;
   
   state = (BSP_StatusTypeDef)HAL_UART_Transmit_DMA(&huart1,pData,size);
-  
+  if(BSP_OK != state)
+  {
+    state = BSP_ERROR;
+  }
   return state;
 }
 /*******************************************************************************
@@ -202,6 +217,34 @@ BSP_StatusTypeDef BSP_SendRequestCmdToDriverBoard(pPROTOCOLCMD pRequestCmd)
   return state;
 }
 
+BSP_StatusTypeDef       BSP_AckRequestCmdFromDriverBoard(pPROTOCOLCMD pRequestCmd);
+/*******************************************************************************
+*
+*       Function        :BSP_AckRequestCmdFromDriverBoard()
+*
+*       Input           :pPROTOCOLCMD pRequestCmd
+*
+*       Return          :BSP_StatusTypeDef
+*
+*       Description     :--
+*
+*
+*       Data            :2017/12/28
+*       Author          :bertz
+*******************************************************************************/
+BSP_StatusTypeDef BSP_AckRequestCmdFromDriverBoard(pPROTOCOLCMD pRequestCmd)
+{
+  BSP_StatusTypeDef state = BSP_OK;
+  AckCmdBuffer[1] = pRequestCmd->AckCmdCode;
+  AckCmdBuffer[2] = pRequestCmd->AckCodeH;
+  AckCmdBuffer[3] = pRequestCmd->AckCodeL;
+  AckCmdBuffer[4] = getXORCode(AckCmdBuffer + 1, 3);
+  
+  state = BSP_SendDataToDriverBoard(AckCmdBuffer,6,0xFFFF); 
+  return state;
+}
+
+
 /*******************************************************************************
 *
 *       Function        :BSP_HandingUartDataFromDriverBoard()
@@ -219,10 +262,10 @@ BSP_StatusTypeDef BSP_SendRequestCmdToDriverBoard(pPROTOCOLCMD pRequestCmd)
 BSP_StatusTypeDef BSP_HandingUartDataFromDriverBoard(void)
 {
   BSP_StatusTypeDef    state = BSP_OK;
-  
+  uint8_t xorTemp;
   uint16_t i;
   
-  if(! DriverBoardUsartType.RX_Flag)
+  if(!DriverBoardUsartType.RX_Flag)
   {
     return state;
   }
@@ -246,7 +289,7 @@ BSP_StatusTypeDef BSP_HandingUartDataFromDriverBoard(void)
       gDriverBoardProtocolCmd.RevDataCnt ++;
       if(gDriverBoardProtocolCmd.DataLength == gDriverBoardProtocolCmd.RevDataCnt)
       {
-        gDriverBoardProtocolCmd.AckXOR8BIT = *(DriverBoardUsartType.RX_pData + i + 1);
+        gDriverBoardProtocolCmd.XOR8BIT = *(DriverBoardUsartType.RX_pData + i + 1);
         
         if(0x5D != *(DriverBoardUsartType.RX_pData + i + 2))
         {
@@ -255,8 +298,14 @@ BSP_StatusTypeDef BSP_HandingUartDataFromDriverBoard(void)
           gDriverBoardProtocolCmd.TotalLength = 0;
           return state;
         }
+        gDriverBoardProtocolCmd.TotalLength  = gDriverBoardProtocolCmd.DataLength + REQUESTFIXEDCOMMANDLEN;
         /* here to check XOR code */
-        
+        xorTemp = getXORCode(DriverBoardCmdBuffer + 1, gDriverBoardProtocolCmd.TotalLength - 3);
+        if(gDriverBoardProtocolCmd.XOR8BIT != xorTemp)
+        {
+          gDriverBoardProtocolCmd.TotalLength = 0;
+          return state;
+        }
         gDriverBoardProtocolCmd.RevRequestFlag = 1;
         return state;
       }
@@ -279,7 +328,11 @@ BSP_StatusTypeDef BSP_HandingUartDataFromDriverBoard(void)
       gDriverBoardProtocolCmd.AckXOR8BIT        =*(DriverBoardUsartType.RX_pData + 4);
       
       /* Here to add XOR code */
-      
+      xorTemp = getXORCode(DriverBoardUsartType.RX_pData + 1, 3);
+      if(gDriverBoardProtocolCmd.AckXOR8BIT != xorTemp)
+      {
+        return state;
+      }
       gDriverBoardProtocolCmd.RevEchoFlag = 1;
       return state;
     }
@@ -301,11 +354,20 @@ BSP_StatusTypeDef BSP_HandingUartDataFromDriverBoard(void)
       {
         return state;
       }
-      gDriverBoardProtocolCmd.AckXOR8BIT = *(DriverBoardUsartType.RX_pData + 5);
       
-      /* here to check XOR */
-      gDriverBoardProtocolCmd.RevRequestFlag    = 1;
+      
+      
+      gDriverBoardProtocolCmd.XOR8BIT           = *(DriverBoardUsartType.RX_pData + 5);
       gDriverBoardProtocolCmd.TotalLength       = REQUESTFIXEDCOMMANDLEN;
+      /* here to check XOR */
+      xorTemp = getXORCode(DriverBoardCmdBuffer + 1, gDriverBoardProtocolCmd.TotalLength - 3);
+      if(gDriverBoardProtocolCmd.XOR8BIT != xorTemp)
+      {
+        gDriverBoardProtocolCmd.TotalLength       = 0;
+        return state;
+      }
+      gDriverBoardProtocolCmd.RevRequestFlag    = 1;
+      
       return state;
     }
     
@@ -322,12 +384,17 @@ BSP_StatusTypeDef BSP_HandingUartDataFromDriverBoard(void)
           gDriverBoardProtocolCmd.TotalLength           = 0;
           return state;
         }
-        gDriverBoardProtocolCmd.AckXOR8BIT = *(DriverBoardUsartType.RX_pData + i + 1);
-        
-        /* here add to check XOR */
-        
-        gDriverBoardProtocolCmd.RevRequestFlag  = 1;
+        gDriverBoardProtocolCmd.XOR8BIT = *(DriverBoardUsartType.RX_pData + i + 1);
         gDriverBoardProtocolCmd.TotalLength     = REQUESTFIXEDCOMMANDLEN + gDriverBoardProtocolCmd.DataLength;
+        /* here add to check XOR */
+        xorTemp = getXORCode(DriverBoardCmdBuffer + 1, gDriverBoardProtocolCmd.TotalLength - 3);
+        if(gDriverBoardProtocolCmd.XOR8BIT != xorTemp)
+        {
+          gDriverBoardProtocolCmd.TotalLength     = 0;
+          return state;
+        }
+        
+        gDriverBoardProtocolCmd.RevRequestFlag  = 1; 
         return state;
       }
     } 
@@ -336,8 +403,57 @@ BSP_StatusTypeDef BSP_HandingUartDataFromDriverBoard(void)
 }
 
 
-BSP_StatusTypeDef       BSP_HandingCmdFromDriverBoard(pPROTOCOLCMD pRequestCmd);
-BSP_StatusTypeDef       BSP_TrySend5TimesCmdToDriverBoard(pPROTOCOLCMD pRequestCmd);
+/*******************************************************************************
+*
+*       Function        :BSP_HandingCmdFromDriverBoard()
+*
+*       Input           :pPROTOCOLCMD pRequestCmd
+*
+*       Return          :BSP_StatusTypeDef
+*
+*       Description     :--
+*
+*
+*       Data            :2017/12/28
+*       Author          :bertz
+*******************************************************************************/
+BSP_StatusTypeDef BSP_HandingCmdFromDriverBoard(pPROTOCOLCMD pRequestCmd)
+{
+  BSP_StatusTypeDef state = BSP_OK;
+  
+  if(1 == pRequestCmd->RevRequestFlag)
+  {
+    switch((pRequestCmd->CmdType) & 0xF0)
+    {
+    case 0xB0: pRequestCmd->AckCmdCode = 0xAB;
+               if(0xB2 == pRequestCmd->CmdType)
+               {
+                  pRequestCmd->AckCodeH   = 0x02;
+                  if(gMotorMachine.HorizontalRasterState && 0 == gMotorMachine.RunningState)
+                  {
+                    gMotorMachine.OpenFlag  = 1;
+                    gMotorMachine.CloseFlag = 0;
+                  }
+               }
+               break;
+      
+      default: state = BSP_NOCMD; break;
+    
+    }
+    
+    BSP_AckRequestCmdFromDriverBoard(pRequestCmd);
+    
+    pRequestCmd->HandingFlag      = 0;
+    pRequestCmd->RevRequestFlag   = 0;
+    pRequestCmd->DataLength       = 0;
+    pRequestCmd->DataLengthHight  = 0;
+    pRequestCmd->DataLengthLow    = 0;
+    pRequestCmd->RevDataCnt       = 0;
+    pRequestCmd->TotalLength      = 0;
+  } 
+  return state;
+}
+
 
 
 

@@ -49,6 +49,9 @@
 
 /* USER CODE BEGIN Includes */
 #include "bsp_protocol.h"
+#include "bsp_gentlesensor.h"
+#include "bsp_common.h"
+#include "bsp_motor.h"
 
 /* USER CODE END Includes */
 
@@ -56,7 +59,22 @@
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
+extern  USARTRECIVETYPE     DriverBoardUsartType;
 
+MOTORMACHINE gMotorMachine;
+PROTOCOLCMD  gDriverBoardProtocolCmd;
+GPIOSTATUSDETECTION gGentleSensorStatusDetection;
+
+uint8_t gVerLastReadVal;
+uint8_t gVerCurrentReadVal;
+uint8_t gHorLastReadVal;
+uint8_t gHorCurrentReadVal;
+
+uint16_t    gTIM4Cnt;
+uint8_t     gTIM4CntFlag;
+
+uint16_t    gTIM5Cnt;
+uint8_t     gTIM5CntFlag;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -108,8 +126,11 @@ int main(void)
 
   /* Initialize interrupts */
   MX_NVIC_Init();
-
+  HAL_TIM_Base_Start_IT(&htim4);
+  HAL_TIM_Base_Start_IT(&htim5);
+  
   /* USER CODE BEGIN 2 */
+  BSP_MotorInit();
   BSP_DriverBoardProtocolInit();
 
   /* USER CODE END 2 */
@@ -121,6 +142,11 @@ int main(void)
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
+    BSP_MotorCheck();
+    BSP_MotorAction();
+    
+    BSP_HandingUartDataFromDriverBoard();
+    BSP_HandingCmdFromDriverBoard(&gDriverBoardProtocolCmd);
 
   }
   /* USER CODE END 3 */
@@ -220,7 +246,104 @@ static void MX_NVIC_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+  /* Prevent unused argument(s) compilation warning */
+  UNUSED(htim);
+  /* NOTE : This function Should not be modified, when the callback is needed,
+            the __HAL_TIM_PeriodElapsedCallback could be implemented in the user file
+   */
+  /* 0.1 ms*/
+  if(htim4.Instance == htim->Instance)
+  {
+    gVerCurrentReadVal = HAL_GPIO_ReadPin(VerRasterInput_GPIO_Port, VerRasterInput_Pin);
+    gHorCurrentReadVal = HAL_GPIO_ReadPin(HorRasterInput_GPIO_Port, HorRasterInput_Pin);
+    
+    if(1 == gVerCurrentReadVal && 1 == gVerLastReadVal)
+    {
+      gMotorMachine.VerFilterCnt ++;
+      if(gMotorMachine.VerFilterCnt > 20)
+      {
+        gMotorMachine.VerticalRasterState = 1;
+        gMotorMachine.VerFilterCnt = 0;
+        if(UPDIR == gMotorMachine.RunDir)
+        {
+          gMotorMachine.RunDir = DOWNDIR;
+          gMotorMachine.RunningState = 0;
+          BSP_MotorStop();
+        }
+      }
+    }
+    else
+    {
+      gMotorMachine.VerticalRasterState = 0;
+      gMotorMachine.VerFilterCnt = 0;
+    }
+    
+    if(1 == gHorCurrentReadVal && 1 == gHorLastReadVal)
+    {
+      gMotorMachine.HorFilterCnt ++;
+      if(gMotorMachine.HorFilterCnt > 20)
+      {
+        gMotorMachine.HorizontalRasterState = 1;
+        gMotorMachine.HorFilterCnt = 0;
+        if(DOWNDIR == gMotorMachine.RunDir)
+        {
+          gMotorMachine.RunDir = UPDIR;
+          gMotorMachine.RunningState = 0;
+          BSP_MotorStop();
+        }
+      }
+    }
+    else
+    {
+      gMotorMachine.HorizontalRasterState = 0;
+      gMotorMachine.HorFilterCnt = 0;
+    }
+    gVerLastReadVal     = gVerCurrentReadVal;
+    gHorLastReadVal     = gHorCurrentReadVal;
+  }
+  
+  /* 1ms */
+  if(htim5.Instance == htim->Instance)
+  {
+    gTIM5Cnt++;
+    if(gTIM5Cnt > 300)
+    {
+      gTIM5CntFlag = 1;
+      gTIM5Cnt = 0;
+    }   
+    gGentleSensorStatusDetection.GpioCurrentReadVal = HAL_GPIO_ReadPin(GentleSensor_GPIO_Port,GentleSensor_Pin);
+    if(0 == gGentleSensorStatusDetection.GpioCurrentReadVal && 0 == gGentleSensorStatusDetection.GpioLastReadVal)
+    {
+      if(0 == gGentleSensorStatusDetection.GpioCheckedFlag)
+      {
+        gGentleSensorStatusDetection.GpioFilterCnt ++;
+        if(gGentleSensorStatusDetection.GpioFilterCnt > gGentleSensorStatusDetection.GpioFilterCntSum && 0 == gGentleSensorStatusDetection.GpioStatusVal)
+        {
+          gGentleSensorStatusDetection.GpioStatusVal = 1;
+          gGentleSensorStatusDetection.GpioFilterCnt = 0;
+          gGentleSensorStatusDetection.GpioCheckedFlag = 1;
+          gMotorMachine.GentleSensorFlag = 1;
+        }
+      }
+    }
+    else
+    {
+      gMotorMachine.GentleSensorFlag = 0;
+      gGentleSensorStatusDetection.GpioCheckedFlag       = 0;
+      gGentleSensorStatusDetection.GpioFilterCnt     = 0;
+      gGentleSensorStatusDetection.GpioStatusVal     = 0;
+      gGentleSensorStatusDetection.GpioSendDataFlag  = 1;
+    }     
+    gGentleSensorStatusDetection.GpioLastReadVal = gGentleSensorStatusDetection.GpioCurrentReadVal; 
+    if(gGentleSensorStatusDetection.GpioValidLogicTimeCnt > 80)
+    {
+      gGentleSensorStatusDetection.GpioValidLogicTimeCnt--;
+    }
+  }
 
+}
 /* USER CODE END 4 */
 
 /**
