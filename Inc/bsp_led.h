@@ -1,7 +1,7 @@
 /**
   ******************************************************************************
-  * File Name          : bsp_common.h
-  * Description        : 
+  * File Name          : bsp_led.h
+  * Description        : this file is about leds
   *
   ******************************************************************************
   ** This notice applies to any and all portions of this file
@@ -37,73 +37,38 @@
   ******************************************************************************
   */
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __bsp_common_H
-#define __bsp_common_H
+#ifndef __bsp_led_H
+#define __bsp_led_H
 #ifdef __cplusplus
  extern "C" {
 #endif
 /* Includes ------------------------------------------------------------------*/
-#include "main.h"
-#include "stm32f1xx_hal.h"
-#define RunningLED_OFF                   GPIO_PIN_SET
-#define RunningLED_ON                  GPIO_PIN_RESET
-#define CommunicationLED_OFF             GPIO_PIN_SET
-#define CommunicationLED_ON            GPIO_PIN_RESET
-#define MCUAtmosphereLEDG_ON            GPIO_PIN_SET
-#define MCUAtmosphereLEDG_OFF           GPIO_PIN_RESET
-#define MCUAtmosphereLEDR_ON            GPIO_PIN_SET
-#define MCUAtmosphereLEDR_OFF           GPIO_PIN_RESET
+#include "bsp_common.h"
+   void BSP_RUNNINGLED_ON(void);
+   void BSP_RUNNINGLED_OFF(void);
+   void BSP_RUNNINGLED_TORGGLE(void);
    
-   /** enum: BSP_StatusTypeDef
-   **
-   ** DESCRIPTION:
-   **  --µ¿’¢∞Â∞Â¿‡–Õ
-   **
-   ** CREATED: 2017/12/7, by bert
-   **
-   ** FILE: 
-   **
-   ** AUTHOR: Bert.Zhang
-   ********************************************************************************
-   */
-   typedef enum
-   {
-     BSP_OK       = 0x00U,
-     BSP_ERROR    = 0x01U,
-     BSP_BUSY     = 0x02U,
-     BSP_TIMEOUT  = 0x03U,
-     BSP_NOCMD    = 0x04U
-   }BSP_StatusTypeDef;
+   void BSP_COMMUNICATIONLED_ON(void);
+   void BSP_COMMUNICATIONLED_OFF(void);
+   void BSP_COMMUNICATIONLED_TORGGLE(void);
+   
+   void BSP_ATMOSPHERELEDG_ON(void);
+   void BSP_ATMOSPHERELEDG_OFF(void);
+   void BSP_ATMOSPHERELEDG_TOGGLE(void);
+   
+   void BSP_ATMOSPHERELEDR_ON(void);
+   void BSP_ATMOSPHERELEDR_OFF(void);
+   void BSP_ATMOSPHERELEDR_TOGGLE(void);
+   
+   void BSP_LEDCheck(void);
 
-/*******************************************************************************
-** struct: sGpioStatusDetection
-**
-** DESCRIPTION:
-**  --gpio status 
-**
-** CREATED: 2017/12/26, by bert
-**
-** FILE: 
-**
-** AUTHOR: Bert.Zhang
-********************************************************************************
-*/
-struct sGpioStatusDetection
-{
-  uint8_t   GpioCurrentReadVal;                 //Current GPIO value
-  uint8_t   GpioLastReadVal;                    //Last GPIO value
-  uint8_t   GpioFilterCnt;                      //Filter times
-  uint16_t  GpioFilterCntSum;
-  uint8_t   GpioStatusVal;                      //GPIO true logic state
-  uint8_t   GpioCheckedFlag;                    //vehicle is stilled Flag
-  uint8_t   GpioSendDataFlag;                   //Send data flag,it is zero if data been sent within asingle logic ,
-                                                //and set to one in the next logic
-  uint32_t  GpioValidLogicTimeCnt;              //Gpio vaild logic time counter
-}; 
-
-typedef struct sGpioStatusDetection  GPIOSTATUSDETECTION, *pGPIOSTATUSDETECTION;
-
+/* USER CODE BEGIN Includes */
+/* USER CODE END Includes */
+/* USER CODE BEGIN Private defines */
+/* USER CODE END Private defines */
+/* USER CODE BEGIN Prototypes */
+/* USER CODE END Prototypes */
 #ifdef __cplusplus
 }
 #endif
-#endif /*__bsp_common_H */
+#endif /*__bsp_led_H */

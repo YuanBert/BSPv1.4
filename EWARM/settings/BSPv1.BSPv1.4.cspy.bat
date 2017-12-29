@@ -25,7 +25,7 @@ if not "%~1" == "" goto debugFile
 
 @echo on 
 
-"D:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "F:\Users\Zgeny\Documents\GitHub\BSPv1.4\EWARM\settings\BSPv1.BSPv1.4.general.xcl" --backend -f "F:\Users\Zgeny\Documents\GitHub\BSPv1.4\EWARM\settings\BSPv1.BSPv1.4.driver.xcl" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "E:\Users\bertz\Documents\GitHub\BSPv1.4\EWARM\settings\BSPv1.BSPv1.4.general.xcl" --backend -f "E:\Users\bertz\Documents\GitHub\BSPv1.4\EWARM\settings\BSPv1.BSPv1.4.driver.xcl" 
 
 @echo off 
 goto end 
@@ -34,7 +34,7 @@ goto end
 
 @echo on 
 
-"D:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "F:\Users\Zgeny\Documents\GitHub\BSPv1.4\EWARM\settings\BSPv1.BSPv1.4.general.xcl" "--debug_file=%~1" --backend -f "F:\Users\Zgeny\Documents\GitHub\BSPv1.4\EWARM\settings\BSPv1.BSPv1.4.driver.xcl" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "E:\Users\bertz\Documents\GitHub\BSPv1.4\EWARM\settings\BSPv1.BSPv1.4.general.xcl" "--debug_file=%~1" --backend -f "E:\Users\bertz\Documents\GitHub\BSPv1.4\EWARM\settings\BSPv1.BSPv1.4.driver.xcl" 
 
 @echo off 
 :end

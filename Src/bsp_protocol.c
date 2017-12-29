@@ -182,8 +182,9 @@ BSP_StatusTypeDef BSP_DriverBoardProtocolInit(void)
 BSP_StatusTypeDef BSP_SendDataToDriverBoard(uint8_t *pData, uint16_t size,uint32_t Timeout)
 {
   BSP_StatusTypeDef state = BSP_OK;
-  
+  HAL_GPIO_WritePin(CTR485_EN1_GPIO_Port,CTR485_EN1_Pin,GPIO_PIN_SET);
   state = (BSP_StatusTypeDef)HAL_UART_Transmit_DMA(&huart1,pData,size);
+  HAL_GPIO_WritePin(CTR485_EN1_GPIO_Port,CTR485_EN1_Pin,GPIO_PIN_RESET);
   if(BSP_OK != state)
   {
     state = BSP_ERROR;
@@ -433,6 +434,10 @@ BSP_StatusTypeDef BSP_HandingCmdFromDriverBoard(pPROTOCOLCMD pRequestCmd)
                   {
                       gMotorMachine.OpenFlag  = 1;
                       gMotorMachine.CloseFlag = 0;
+                  }
+                  else
+                  {
+                    pRequestCmd->AckCodeL = BSP_ERROR;
                   }
                }
                break;

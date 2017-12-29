@@ -52,6 +52,7 @@
 #include "bsp_gentlesensor.h"
 #include "bsp_common.h"
 #include "bsp_motor.h"
+#include "bsp_led.h"
 
 /* USER CODE END Includes */
 
@@ -75,6 +76,8 @@ uint8_t     gTIM4CntFlag;
 
 uint16_t    gTIM5Cnt;
 uint8_t     gTIM5CntFlag;
+uint16_t    gTIM5LedCnt;
+uint8_t     gTIM5LedFlag;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -132,6 +135,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
   BSP_MotorInit();
   BSP_DriverBoardProtocolInit();
+  BSP_RUNNINGLED_ON();
 
   /* USER CODE END 2 */
 
@@ -147,6 +151,12 @@ int main(void)
     
     BSP_HandingUartDataFromDriverBoard();
     BSP_HandingCmdFromDriverBoard(&gDriverBoardProtocolCmd);
+    
+    if(gTIM5LedFlag)
+    {
+      BSP_LEDCheck();
+      gTIM5LedFlag = 0;
+    }
 
   }
   /* USER CODE END 3 */
@@ -308,6 +318,11 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   if(htim5.Instance == htim->Instance)
   {
     gTIM5Cnt++;
+    if(0 == (gTIM5Cnt%50))
+    {
+      gTIM5LedFlag = 1;
+    }
+    
     if(gTIM5Cnt > 300)
     {
       gTIM5CntFlag = 1;

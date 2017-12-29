@@ -210,6 +210,12 @@ BSP_StatusTypeDef BSP_MotorCheck(void)
     return state;
   }
   
+  if(gMotorMachine.VerticalRasterState && gMotorMachine.HorizontalRasterState)
+  {
+    BSP_MotorStop();
+    state = BSP_ERROR;
+    return state;
+  }
   //垂直位置
   if(gMotorMachine.VerticalRasterState && 0 == gMotorMachine.HorizontalRasterState)
   {
@@ -259,7 +265,7 @@ BSP_StatusTypeDef BSP_MotorCheck(void)
     }
   }
   /* 运行位置 */
-  if(gMotorMachine.VerticalRasterState && gMotorMachine.HorizontalRasterState)
+  if(0 == gMotorMachine.VerticalRasterState && 0 == gMotorMachine.HorizontalRasterState)
   {
     if(gMotorMachine.OpenFlag)
     {
