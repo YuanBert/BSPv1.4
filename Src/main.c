@@ -9,7 +9,7 @@
   * inserted by the user or by software development tools
   * are owned by their respective copyright owners.
   *
-  * COPYRIGHT(c) 2017 STMicroelectronics
+  * COPYRIGHT(c) 2018 STMicroelectronics
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -126,12 +126,12 @@ int main(void)
   MX_TIM5_Init();
   MX_USART1_UART_Init();
   MX_USART2_UART_Init();
+  HAL_TIM_Base_Start_IT(&htim4);
+  HAL_TIM_Base_Start_IT(&htim5);
 
   /* Initialize interrupts */
   MX_NVIC_Init();
-  HAL_TIM_Base_Start_IT(&htim4);
-  HAL_TIM_Base_Start_IT(&htim5);
-  
+
   /* USER CODE BEGIN 2 */
   BSP_MotorInit();
   BSP_DriverBoardProtocolInit();
@@ -148,6 +148,16 @@ int main(void)
   /* USER CODE BEGIN 3 */
     BSP_MotorCheck();
     BSP_MotorAction();
+    
+//    if(gTIM5CntFlag)
+//    {
+//      if(0 == gMotorMachine.RunningState)
+//      {
+//        BSP_MotorRun(gMotorMachine.RunDir);
+//        gMotorMachine.RunningState = 1;
+//      }
+//      gTIM5CntFlag = 0;
+//    }
     
     BSP_HandingUartDataFromDriverBoard();
     BSP_HandingCmdFromDriverBoard(&gDriverBoardProtocolCmd);
@@ -323,7 +333,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
       gTIM5LedFlag = 1;
     }
     
-    if(gTIM5Cnt > 300)
+    if(gTIM5Cnt > 5000)
     {
       gTIM5CntFlag = 1;
       gTIM5Cnt = 0;
