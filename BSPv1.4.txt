@@ -1,6 +1,6 @@
 Configuration	BSPv1.4
 STM32CubeMX 	4.23.0
-Date	01/03/2018
+Date	01/04/2018
 MCU	STM32F103RCTx
 
 
@@ -54,9 +54,9 @@ Pin Nb	PINs	FUNCTIONs	LABELs
 43	PA10	USART1_RX	CoreBoard_RX
 46	PA13	SYS_JTMS-SWDIO	
 49	PA14	SYS_JTCK-SWCLK	
-55	PB3	GPIO_Input	OpenBoxInput
-56	PB4	GPIO_Input	HorRasterInput
-57	PB5	GPIO_Input	VerRasterInput
+54	PD2	GPIO_Input	OpenBoxInput
+55	PB3	GPIO_Input	HorRasterInput
+56	PB4	GPIO_Input	VerRasterInput
 59	PB7	GPIO_Input	MCU_WIRLESS
 62	PB9	GPIO_Output	RunningLED
 

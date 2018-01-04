@@ -91,11 +91,11 @@
 #define CoreBoard_TX_GPIO_Port GPIOA
 #define CoreBoard_RX_Pin GPIO_PIN_10
 #define CoreBoard_RX_GPIO_Port GPIOA
-#define OpenBoxInput_Pin GPIO_PIN_3
-#define OpenBoxInput_GPIO_Port GPIOB
-#define HorRasterInput_Pin GPIO_PIN_4
+#define OpenBoxInput_Pin GPIO_PIN_2
+#define OpenBoxInput_GPIO_Port GPIOD
+#define HorRasterInput_Pin GPIO_PIN_3
 #define HorRasterInput_GPIO_Port GPIOB
-#define VerRasterInput_Pin GPIO_PIN_5
+#define VerRasterInput_Pin GPIO_PIN_4
 #define VerRasterInput_GPIO_Port GPIOB
 #define MCU_WIRLESS_Pin GPIO_PIN_7
 #define MCU_WIRLESS_GPIO_Port GPIOB

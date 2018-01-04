@@ -100,7 +100,7 @@ BSP_StatusTypeDef BSP_MotorInit(void)
 BSP_StatusTypeDef BSP_MotorOpen(void)
 {
   BSP_StatusTypeDef state  = BSP_OK;
-  HAL_GPIO_WritePin(MotorBRKCtrl_GPIO_Port,MotorBRKCtrl_Pin,GPIO_PIN_SET);
+  HAL_GPIO_WritePin(MotorBRKCtrl_GPIO_Port,MotorBRKCtrl_Pin,GPIO_PIN_RESET);
   HAL_GPIO_WritePin(MotorFRCtrl_GPIO_Port,MotorFRCtrl_Pin, GPIO_PIN_RESET);
   HAL_GPIO_WritePin(MotorENCtrl_GPIO_Port,MotorENCtrl_Pin,GPIO_PIN_RESET);  
   return state;
@@ -123,7 +123,7 @@ BSP_StatusTypeDef BSP_MotorOpen(void)
 BSP_StatusTypeDef BSP_MotorClose(void)
 {
   BSP_StatusTypeDef state  = BSP_OK;  
-  HAL_GPIO_WritePin(MotorBRKCtrl_GPIO_Port,MotorBRKCtrl_Pin,GPIO_PIN_SET);
+  HAL_GPIO_WritePin(MotorBRKCtrl_GPIO_Port,MotorBRKCtrl_Pin,GPIO_PIN_RESET);
   HAL_GPIO_WritePin(MotorFRCtrl_GPIO_Port,MotorFRCtrl_Pin, GPIO_PIN_SET);
   HAL_GPIO_WritePin(MotorENCtrl_GPIO_Port,MotorENCtrl_Pin,GPIO_PIN_RESET);
   return state;
@@ -146,17 +146,17 @@ BSP_StatusTypeDef BSP_MotorClose(void)
 BSP_StatusTypeDef BSP_MotorRun(uint8_t nDir)
 {
   BSP_StatusTypeDef state  = BSP_OK;
-  if(UPDIR == nDir) //down
+  if(UPDIR == nDir) //ƒÊ ±’Î
   {
-    HAL_GPIO_WritePin(MotorBRKCtrl_GPIO_Port,MotorBRKCtrl_Pin,GPIO_PIN_SET);
-    HAL_GPIO_WritePin(MotorFRCtrl_GPIO_Port,MotorFRCtrl_Pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(MotorBRKCtrl_GPIO_Port,MotorBRKCtrl_Pin,GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(MotorFRCtrl_GPIO_Port,MotorFRCtrl_Pin, GPIO_PIN_RESET);
     HAL_GPIO_WritePin(MotorENCtrl_GPIO_Port,MotorENCtrl_Pin,GPIO_PIN_RESET);
   }
   
-  if(DOWNDIR == nDir) //up
+  if(DOWNDIR == nDir) //À≥ ±’Î
   {
-    HAL_GPIO_WritePin(MotorBRKCtrl_GPIO_Port,MotorBRKCtrl_Pin,GPIO_PIN_SET);
-    HAL_GPIO_WritePin(MotorFRCtrl_GPIO_Port,MotorFRCtrl_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(MotorBRKCtrl_GPIO_Port,MotorBRKCtrl_Pin,GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(MotorFRCtrl_GPIO_Port,MotorFRCtrl_Pin, GPIO_PIN_SET);
     HAL_GPIO_WritePin(MotorENCtrl_GPIO_Port,MotorENCtrl_Pin,GPIO_PIN_RESET);    
   }
   return state;
@@ -179,7 +179,7 @@ BSP_StatusTypeDef BSP_MotorRun(uint8_t nDir)
 BSP_StatusTypeDef BSP_MotorStop(void)
 {
   BSP_StatusTypeDef state  = BSP_OK;
-  HAL_GPIO_WritePin(MotorBRKCtrl_GPIO_Port,MotorBRKCtrl_Pin,GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(MotorBRKCtrl_GPIO_Port,MotorBRKCtrl_Pin,GPIO_PIN_SET);
   HAL_GPIO_WritePin(MotorFRCtrl_GPIO_Port,MotorFRCtrl_Pin, GPIO_PIN_SET);
   HAL_GPIO_WritePin(MotorENCtrl_GPIO_Port,MotorENCtrl_Pin,GPIO_PIN_SET);
   return state;
@@ -225,7 +225,6 @@ BSP_StatusTypeDef BSP_MotorCheck(void)
     
     if(gMotorMachine.OpenFlag)
     {
-      HAL_Delay(100);
       gMotorMachine.OpenFlag = 0;
     }
     
@@ -234,7 +233,6 @@ BSP_StatusTypeDef BSP_MotorCheck(void)
       if(DOWNDIR == gMotorMachine.RunDir)
       {
         gMotorMachine.StartFlag = 1;
-        HAL_Delay(100);
         return state;
       }
       return state;
@@ -302,7 +300,6 @@ BSP_StatusTypeDef BSP_MotorCheck(void)
         return state;
       }
     }
-    
     if(0 == gMotorMachine.RunningState)
     {
       gMotorMachine.RunDir = UPDIR;
@@ -311,8 +308,6 @@ BSP_StatusTypeDef BSP_MotorCheck(void)
       gMotorMachine.StartFlag = 1;    
       return state;
     }
-    
-  
   }
   return state;
 }

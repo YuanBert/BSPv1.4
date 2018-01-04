@@ -434,6 +434,8 @@ BSP_StatusTypeDef BSP_HandingCmdFromDriverBoard(pPROTOCOLCMD pRequestCmd)
                   {
                       gMotorMachine.OpenFlag  = 1;
                       gMotorMachine.CloseFlag = 0;
+                      gMotorMachine.StartFlag = 1;
+                      gMotorMachine.RunDir = UPDIR;
                   }
                   else
                   {

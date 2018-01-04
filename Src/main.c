@@ -126,13 +126,14 @@ int main(void)
   MX_TIM5_Init();
   MX_USART1_UART_Init();
   MX_USART2_UART_Init();
-  HAL_TIM_Base_Start_IT(&htim4);
-  HAL_TIM_Base_Start_IT(&htim5);
+  
 
   /* Initialize interrupts */
   MX_NVIC_Init();
 
   /* USER CODE BEGIN 2 */
+  HAL_TIM_Base_Start_IT(&htim4);
+  HAL_TIM_Base_Start_IT(&htim5);
   BSP_MotorInit();
   BSP_DriverBoardProtocolInit();
   BSP_RUNNINGLED_ON();
@@ -279,7 +280,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     gVerCurrentReadVal = HAL_GPIO_ReadPin(VerRasterInput_GPIO_Port, VerRasterInput_Pin);
     gHorCurrentReadVal = HAL_GPIO_ReadPin(HorRasterInput_GPIO_Port, HorRasterInput_Pin);
     
-    if(1 == gVerCurrentReadVal && 1 == gVerLastReadVal)
+    if(0 == gVerCurrentReadVal && 0 == gVerLastReadVal)
     {
       gMotorMachine.VerFilterCnt ++;
       if(gMotorMachine.VerFilterCnt > 20)
@@ -300,7 +301,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
       gMotorMachine.VerFilterCnt = 0;
     }
     
-    if(1 == gHorCurrentReadVal && 1 == gHorLastReadVal)
+    if(0 == gHorCurrentReadVal && 0 == gHorLastReadVal)
     {
       gMotorMachine.HorFilterCnt ++;
       if(gMotorMachine.HorFilterCnt > 20)
