@@ -329,7 +329,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   if(htim5.Instance == htim->Instance)
   {
     gTIM5Cnt++;
-    if(0 == (gTIM5Cnt%50))
+    if(0 == (gTIM5Cnt%250))
     {
       gTIM5LedFlag = 1;
     }
