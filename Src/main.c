@@ -65,6 +65,10 @@ extern  USARTRECIVETYPE     DriverBoardUsartType;
 MOTORMACHINE gMotorMachine;
 PROTOCOLCMD  gDriverBoardProtocolCmd;
 GPIOSTATUSDETECTION gGentleSensorStatusDetection;
+GPIOSTATUSDETECTION gRadarInputStatusGpio;
+
+uint8_t         gComingCarFlag;
+uint32_t        gWaitCnt;
 
 uint8_t gVerLastReadVal;
 uint8_t gVerCurrentReadVal;
@@ -126,12 +130,13 @@ int main(void)
   MX_TIM5_Init();
   MX_USART1_UART_Init();
   MX_USART2_UART_Init();
-  
 
   /* Initialize interrupts */
   MX_NVIC_Init();
 
   /* USER CODE BEGIN 2 */
+  gRadarInputStatusGpio.GpioFilterCntSum = 10;
+  
   HAL_TIM_Base_Start_IT(&htim4);
   HAL_TIM_Base_Start_IT(&htim5);
   BSP_MotorInit();
@@ -338,7 +343,33 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     {
       gTIM5CntFlag = 1;
       gTIM5Cnt = 0;
-    }   
+    }
+    /* 雷达检测 */
+    gRadarInputStatusGpio.GpioCurrentReadVal = HAL_GPIO_ReadPin(RadarInput_GPIO_Port, RadarInput_Pin);
+    if(0 == gRadarInputStatusGpio.GpioCurrentReadVal && 0 == gRadarInputStatusGpio.GpioLastReadVal)
+    {
+      if(0 == gRadarInputStatusGpio.GpioCheckedFlag)
+      {
+        gRadarInputStatusGpio.GpioFilterCnt ++;
+        if(gRadarInputStatusGpio.GpioFilterCnt > gRadarInputStatusGpio.GpioFilterCntSum && 0 == gRadarInputStatusGpio.GpioStatusVal)
+        {
+          gRadarInputStatusGpio.GpioStatusVal = 1;
+          gRadarInputStatusGpio.GpioFilterCnt = 0;
+          gRadarInputStatusGpio.GpioCheckedFlag = 1;
+          gMotorMachine.RadarSensorFlag = 1;
+        }
+      }
+    }
+    else
+    {
+      gMotorMachine.RadarSensorFlag = 0;
+      gRadarInputStatusGpio.GpioCheckedFlag = 0;
+      gRadarInputStatusGpio.GpioStatusVal = 0;
+      gRadarInputStatusGpio.GpioSendDataFlag = 1;
+    }
+    gRadarInputStatusGpio.GpioLastReadVal = gRadarInputStatusGpio.GpioCurrentReadVal;
+    
+    /* 地感检测 */
     gGentleSensorStatusDetection.GpioCurrentReadVal = HAL_GPIO_ReadPin(GentleSensor_GPIO_Port,GentleSensor_Pin);
     if(0 == gGentleSensorStatusDetection.GpioCurrentReadVal && 0 == gGentleSensorStatusDetection.GpioLastReadVal)
     {
@@ -356,6 +387,13 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     }
     else
     {
+      
+      //车离开之后，清空标记位
+      if(gGentleSensorStatusDetection.GpioStatusVal && gComingCarFlag)
+      {
+        gComingCarFlag = 0;
+      }
+      
       gMotorMachine.GentleSensorFlag = 0;
       gGentleSensorStatusDetection.GpioCheckedFlag       = 0;
       gGentleSensorStatusDetection.GpioFilterCnt     = 0;
@@ -363,9 +401,22 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
       gGentleSensorStatusDetection.GpioSendDataFlag  = 1;
     }     
     gGentleSensorStatusDetection.GpioLastReadVal = gGentleSensorStatusDetection.GpioCurrentReadVal; 
+    
     if(gGentleSensorStatusDetection.GpioValidLogicTimeCnt > 80)
     {
       gGentleSensorStatusDetection.GpioValidLogicTimeCnt--;
+    }
+    
+    
+    //如果100s内车未通过，自动关闸
+    if(gComingCarFlag)
+    {
+      gWaitCnt ++;
+      if(gWaitCnt > 100000)
+      {
+        gWaitCnt = 0;
+        gComingCarFlag = 0;
+      }
     }
   }
 

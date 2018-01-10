@@ -47,6 +47,7 @@
   */
   /* Includes ------------------------------------------------------------------*/
 #include "bsp_motor.h"
+extern uint8_t      gComingCarFlag;
 extern MOTORMACHINE gMotorMachine;
 extern GPIOSTATUSDETECTION gGentleSensorStatusDetection;
 
@@ -208,7 +209,11 @@ BSP_StatusTypeDef BSP_MotorCheck(void)
   {
     return state;
   }
-  
+  //车未退出时直接，返回
+  if(gComingCarFlag)
+  {
+    return state;
+  }
   if(gMotorMachine.VerticalRasterState && gMotorMachine.HorizontalRasterState)
   {
     BSP_MotorStop();
@@ -218,7 +223,7 @@ BSP_StatusTypeDef BSP_MotorCheck(void)
   //垂直位置
   if(gMotorMachine.VerticalRasterState && 0 == gMotorMachine.HorizontalRasterState)
   {
-    if(gMotorMachine.GentleSensorFlag)
+    if(gMotorMachine.GentleSensorFlag || gMotorMachine.RadarSensorFlag) //车辆在地感和雷达的时候，不关闸
     {
       return state;
     }
@@ -283,7 +288,7 @@ BSP_StatusTypeDef BSP_MotorCheck(void)
     {
       if(gMotorMachine.RunningState)
       {
-        if(gMotorMachine.GentleSensorFlag)
+        if(gMotorMachine.GentleSensorFlag ||gMotorMachine.RadarSensorFlag) //检测到地感和雷达后不关闸机
         {
           BSP_MotorStop();
           gMotorMachine.RunningState = 0;

@@ -56,7 +56,7 @@ USARTRECIVETYPE     DriverBoardUsartType;
 
 extern PROTOCOLCMD  gDriverBoardProtocolCmd;
 extern MOTORMACHINE gMotorMachine;
-
+extern uint8_t      gComingCarFlag;
 static uint8_t getXORCode(uint8_t* pData,uint16_t len)
 {
   uint8_t ret;
@@ -427,11 +427,12 @@ BSP_StatusTypeDef BSP_HandingCmdFromDriverBoard(pPROTOCOLCMD pRequestCmd)
     switch((pRequestCmd->CmdType) & 0xF0)
     {
     case 0xB0: pRequestCmd->AckCmdCode = 0xAB;
-               if(0xB2 == pRequestCmd->CmdType)
+               if(0xB2 == pRequestCmd->CmdType)//¿ªÕ¢Ö¸Áî
                {
                   pRequestCmd->AckCodeH   = 0x02;
                   if(0 == gMotorMachine.RunningState)
                   {
+                      gComingCarFlag = 1;
                       gMotorMachine.OpenFlag  = 1;
                       gMotorMachine.CloseFlag = 0;
                       gMotorMachine.StartFlag = 1;

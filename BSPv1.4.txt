@@ -1,6 +1,6 @@
 Configuration	BSPv1.4
 STM32CubeMX 	4.23.0
-Date	01/04/2018
+Date	01/10/2018
 MCU	STM32F103RCTx
 
 
@@ -45,6 +45,7 @@ Pin Nb	PINs	FUNCTIONs	LABELs
 30	PB11	I2C2_SDA	DAC_SDA
 33	PB12	GPIO_Output	MCUAtmosphereLEDR
 34	PB13	GPIO_Output	MCUAtmosphereLEDG
+35	PB14	GPIO_Input	MCU_AIR
 36	PB15	GPIO_Output	MotorFRCtrl
 37	PC6	GPIO_Output	MotorENCtrl
 38	PC7	GPIO_Output	MotorBRKCtrl

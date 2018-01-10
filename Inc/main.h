@@ -77,6 +77,8 @@
 #define MCUAtmosphereLEDR_GPIO_Port GPIOB
 #define MCUAtmosphereLEDG_Pin GPIO_PIN_13
 #define MCUAtmosphereLEDG_GPIO_Port GPIOB
+#define MCU_AIR_Pin GPIO_PIN_14
+#define MCU_AIR_GPIO_Port GPIOB
 #define MotorFRCtrl_Pin GPIO_PIN_15
 #define MotorFRCtrl_GPIO_Port GPIOB
 #define MotorENCtrl_Pin GPIO_PIN_6
