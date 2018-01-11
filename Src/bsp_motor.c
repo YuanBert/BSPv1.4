@@ -50,7 +50,7 @@
 extern uint8_t      gComingCarFlag;
 extern MOTORMACHINE gMotorMachine;
 extern GPIOSTATUSDETECTION gGentleSensorStatusDetection;
-
+extern GPIOSTATUSDETECTION gMCUAIRInputStatusGpio;
 /*******************************************************************************
 *
 *       Function        :BSP_MotorInit()
@@ -288,7 +288,7 @@ BSP_StatusTypeDef BSP_MotorCheck(void)
     {
       if(gMotorMachine.RunningState)
       {
-        if(gMotorMachine.GentleSensorFlag ||gMotorMachine.RadarSensorFlag) //检测到地感和雷达后不关闸机
+        if(gMotorMachine.GentleSensorFlag ||gMotorMachine.RadarSensorFlag || gMotorMachine.AirSensorFlag) //检测到地感和雷达后不关闸机
         {
           BSP_MotorStop();
           gMotorMachine.RunningState = 0;

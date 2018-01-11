@@ -74,6 +74,7 @@
      uint8_t  Motor_Error;
      uint8_t  GentleSensorFlag;
      uint8_t  RadarSensorFlag;
+     uint8_t  AirSensorFlag;
      uint8_t  RemoteControFlag;
      uint8_t  OpenFlag;
      uint8_t  CloseFlag;

@@ -66,7 +66,7 @@ MOTORMACHINE gMotorMachine;
 PROTOCOLCMD  gDriverBoardProtocolCmd;
 GPIOSTATUSDETECTION gGentleSensorStatusDetection;
 GPIOSTATUSDETECTION gRadarInputStatusGpio;
-
+GPIOSTATUSDETECTION gMCUAIRInputStatusGpio;
 uint8_t         gComingCarFlag;
 uint32_t        gWaitCnt;
 
@@ -135,7 +135,8 @@ int main(void)
   MX_NVIC_Init();
 
   /* USER CODE BEGIN 2 */
-  gRadarInputStatusGpio.GpioFilterCntSum = 10;
+  gRadarInputStatusGpio.GpioFilterCntSum  = 10;
+  gMCUAIRInputStatusGpio.GpioFilterCntSum = 5;
   
   HAL_TIM_Base_Start_IT(&htim4);
   HAL_TIM_Base_Start_IT(&htim5);
@@ -344,6 +345,30 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
       gTIM5CntFlag = 1;
       gTIM5Cnt = 0;
     }
+    /* Ñ¹Á¦²¨¼ì²â */
+    gMCUAIRInputStatusGpio.GpioCurrentReadVal = HAL_GPIO_ReadPin(MCU_AIR_GPIO_Port,MCU_AIR_Pin);
+    if(0 == gMCUAIRInputStatusGpio.GpioCurrentReadVal && 0 == gMCUAIRInputStatusGpio.GpioLastReadVal )
+    {
+      if(0 == gMCUAIRInputStatusGpio.GpioCheckedFlag)
+      {
+        gMCUAIRInputStatusGpio.GpioFilterCnt ++;
+        if(gMCUAIRInputStatusGpio.GpioFilterCnt > gMCUAIRInputStatusGpio.GpioFilterCntSum && 0 == gMCUAIRInputStatusGpio.GpioStatusVal)
+        {
+          gMotorMachine.AirSensorFlag = 1;
+          gMCUAIRInputStatusGpio.GpioStatusVal = 1;
+          gMCUAIRInputStatusGpio.GpioFilterCnt = 0;
+          gMCUAIRInputStatusGpio.GpioCheckedFlag = 1;
+        }
+      }
+    }
+    else
+    {
+      gMotorMachine.AirSensorFlag = 0;
+      gMCUAIRInputStatusGpio.GpioCheckedFlag = 0;
+      gMCUAIRInputStatusGpio.GpioStatusVal = 0;
+      gMCUAIRInputStatusGpio.GpioSendDataFlag = 1;
+    }
+    
     /* À×´ï¼ì²â */
     gRadarInputStatusGpio.GpioCurrentReadVal = HAL_GPIO_ReadPin(RadarInput_GPIO_Port, RadarInput_Pin);
     if(0 == gRadarInputStatusGpio.GpioCurrentReadVal && 0 == gRadarInputStatusGpio.GpioLastReadVal)
