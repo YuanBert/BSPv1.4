@@ -53,6 +53,7 @@
 #include "bsp_common.h"
 #include "bsp_motor.h"
 #include "bsp_led.h"
+#include "BSP_DAC5571.h"
 
 /* USER CODE END Includes */
 
@@ -67,6 +68,11 @@ PROTOCOLCMD  gDriverBoardProtocolCmd;
 GPIOSTATUSDETECTION gGentleSensorStatusDetection;
 GPIOSTATUSDETECTION gRadarInputStatusGpio;
 GPIOSTATUSDETECTION gMCUAIRInputStatusGpio;
+
+uint8_t		gCtrlSpeedTimFlag;
+uint8_t		gCtrlSpeedTimCnt;
+uint16_t	gCtrlSpeedCnt;
+
 uint8_t         gComingCarFlag;
 uint32_t        gWaitCnt;
 
@@ -143,6 +149,7 @@ int main(void)
   BSP_MotorInit();
   BSP_DriverBoardProtocolInit();
   BSP_RUNNINGLED_ON();
+  BSP_DAC5571_Init(NormalOperationMode);
 
   /* USER CODE END 2 */
 
@@ -155,6 +162,20 @@ int main(void)
   /* USER CODE BEGIN 3 */
     BSP_MotorCheck();
     BSP_MotorAction();
+    
+    if(gMotorMachine.RunningState && UPDIR == gMotorMachine.RunDir)
+    {
+      if(gCtrlSpeedTimFlag)
+      {
+        gCtrlSpeedTimFlag = 0;
+        BSP_DAC5571_Check();
+      }
+    }
+    
+    if(gMotorMachine.RunningState && DOWNDIR == gMotorMachine.RunDir)
+    {
+       BSP_DAC5571_WriteValue(NormalOperationMode, 0x9F);
+    }
     
 //    if(gTIM5CntFlag)
 //    {
@@ -318,6 +339,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
         {
           gMotorMachine.RunDir = UPDIR;
           gMotorMachine.RunningState = 0;
+          gCtrlSpeedCnt = 0;//水平到位
           BSP_MotorStop();
         }
       }
@@ -334,6 +356,14 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   /* 1ms */
   if(htim5.Instance == htim->Instance)
   {
+    
+    gCtrlSpeedTimCnt++;
+    if(gCtrlSpeedTimCnt > 4)
+    {
+      gComingCarFlag = 1;
+      gCtrlSpeedTimCnt = 0;
+    }
+    
     gTIM5Cnt++;
     if(0 == (gTIM5Cnt%250))
     {
