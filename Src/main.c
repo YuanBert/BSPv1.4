@@ -291,6 +291,12 @@ static void MX_NVIC_Init(void)
   /* ADC1_2_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(ADC1_2_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(ADC1_2_IRQn);
+  /* I2C2_EV_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(I2C2_EV_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(I2C2_EV_IRQn);
+  /* I2C2_ER_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(I2C2_ER_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(I2C2_ER_IRQn);
 }
 
 /* USER CODE BEGIN 4 */

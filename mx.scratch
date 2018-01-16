@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Project>
-<ProjectName>E:\Users\bertz\Documents\GitHub\BSPv1.4\\BSPv1.4</ProjectName>
+<ProjectName>E:\Users\Zgeny\Documents\GitHub\BSPv1.4\\BSPv1.4</ProjectName>
 <CMSIS>..\Drivers\CMSIS</CMSIS>
-<HAL_Driver>C:\Users\bertz\STM32Cube\Repository\STM32Cube_FW_F1_V1.6.0\Drivers\CMSIS</HAL_Driver>
+<HAL_Driver>C:\Users\Zgeny\STM32Cube\Repository\STM32Cube_FW_F1_V1.6.0\Drivers\CMSIS</HAL_Driver>
 
 <Toolchain>EWARM</Toolchain>
 	<Toolversion>0</Toolversion>
