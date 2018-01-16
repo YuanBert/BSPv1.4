@@ -174,7 +174,7 @@ int main(void)
     
     if(gMotorMachine.RunningState && DOWNDIR == gMotorMachine.RunDir)
     {
-       BSP_DAC5571_WriteValue(NormalOperationMode, 0x9F);
+       BSP_DAC5571_WriteValue(NormalOperationMode, 0x7F);
     }
     
 //    if(gTIM5CntFlag)
@@ -341,11 +341,11 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
       {
         gMotorMachine.HorizontalRasterState = 1;
         gMotorMachine.HorFilterCnt = 0;
+        gCtrlSpeedCnt = 0;//水平到位
         if(DOWNDIR == gMotorMachine.RunDir)
         {
           gMotorMachine.RunDir = UPDIR;
           gMotorMachine.RunningState = 0;
-          gCtrlSpeedCnt = 0;//水平到位
           BSP_MotorStop();
         }
       }
@@ -366,7 +366,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     gCtrlSpeedTimCnt++;
     if(gCtrlSpeedTimCnt > 4)
     {
-      gComingCarFlag = 1;
+      gCtrlSpeedTimFlag = 1;
       gCtrlSpeedTimCnt = 0;
     }
     

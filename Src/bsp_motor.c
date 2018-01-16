@@ -231,6 +231,7 @@ BSP_StatusTypeDef BSP_MotorCheck(void)
     if(gMotorMachine.OpenFlag)
     {
       gMotorMachine.OpenFlag = 0;
+      return state;
     }
     
     if(1 == gMotorMachine.CloseFlag && 0 == gMotorMachine.RunningState)

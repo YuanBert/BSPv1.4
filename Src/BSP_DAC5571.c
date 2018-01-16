@@ -43,18 +43,22 @@ BSP_StatusTypeDef BSP_DAC5571_Check()
   {
     gCtrlSpeedCnt = 300;
   }
-  if (gCtrlSpeedCnt < 70)
+  
+  if (gCtrlSpeedCnt < 61)
   {
-    BSP_DAC5571_WriteValue(NormalOperationMode, 45 + 3 * gCtrlSpeedCnt);
+    BSP_DAC5571_WriteValue(NormalOperationMode, 40 + 3 * gCtrlSpeedCnt);
   }
-  if (gCtrlSpeedCnt > 230)
+  
+  if (gCtrlSpeedCnt > 119)
   {
-    BSP_DAC5571_WriteValue(NormalOperationMode, 45 + 3 * (300 - gCtrlSpeedCnt));
+    BSP_DAC5571_WriteValue(NormalOperationMode, 40 + (300 - gCtrlSpeedCnt));
   }
-  if ((70 <= gCtrlSpeedCnt) && (230 >= gCtrlSpeedCnt))
+  
+  if ((60 < gCtrlSpeedCnt) && (120 > gCtrlSpeedCnt))
   {
-    BSP_DAC5571_WriteValue(NormalOperationMode, 0xFF);
+    BSP_DAC5571_WriteValue(NormalOperationMode, 0xDC);
   }
+  
   return status;
 }
 
