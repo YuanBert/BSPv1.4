@@ -1,4 +1,4 @@
-"E:\Users\bertz\Documents\GitHub\BSPv1.4\Src\bsp_led.c"
+"E:\Users\bertz\Documents\GitHub\BSPv1.4\Src\bsp_log.c"
 -std=c11
 -ferror-limit=0
 -I

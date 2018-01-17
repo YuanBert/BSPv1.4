@@ -54,7 +54,7 @@
 #include "bsp_motor.h"
 #include "bsp_led.h"
 #include "BSP_DAC5571.h"
-
+#include "bsp_log.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -68,6 +68,9 @@ PROTOCOLCMD  gDriverBoardProtocolCmd;
 GPIOSTATUSDETECTION gGentleSensorStatusDetection;
 GPIOSTATUSDETECTION gRadarInputStatusGpio;
 GPIOSTATUSDETECTION gMCUAIRInputStatusGpio;
+
+uint8_t         gSendLogReportFlag;
+uint32_t        gLogCnt;
 
 uint8_t		gCtrlSpeedTimFlag;
 uint8_t		gCtrlSpeedTimCnt;
@@ -96,7 +99,7 @@ static void MX_NVIC_Init(void);
 
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
-
+void CheckStatus(void);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
@@ -177,18 +180,16 @@ int main(void)
        BSP_DAC5571_WriteValue(NormalOperationMode, 0x7F);
     }
     
-//    if(gTIM5CntFlag)
-//    {
-//      if(0 == gMotorMachine.RunningState)
-//      {
-//        BSP_MotorRun(gMotorMachine.RunDir);
-//        gMotorMachine.RunningState = 1;
-//      }
-//      gTIM5CntFlag = 0;
-//    }
-    
     BSP_HandingUartDataFromDriverBoard();
     BSP_HandingCmdFromDriverBoard(&gDriverBoardProtocolCmd);
+    
+    CheckStatus();
+    
+    if(gSendLogReportFlag)
+    {
+      BSP_ReportLogInfo();
+      gSendLogReportFlag = 0;
+    }
     
     if(gTIM5LedFlag)
     {
@@ -364,6 +365,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   {
     
     gCtrlSpeedTimCnt++;
+    gLogCnt ++;
     if(gCtrlSpeedTimCnt > 4)
     {
       gCtrlSpeedTimFlag = 1;
@@ -380,6 +382,12 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     {
       gTIM5CntFlag = 1;
       gTIM5Cnt = 0;
+    }
+    
+    if(gLogCnt > 15000)
+    {
+      gSendLogReportFlag = 1;
+      gLogCnt = 0;
     }
     /* Ñ¹Á¦²¨¼ì²â */
     gMCUAIRInputStatusGpio.GpioCurrentReadVal = HAL_GPIO_ReadPin(MCU_AIR_GPIO_Port,MCU_AIR_Pin);
@@ -481,6 +489,14 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     }
   }
 
+}
+
+void CheckStatus(void)
+{
+  BSP_UpDoorOpenSpeed(0x02);
+  BSP_UpMotorStatus(gMotorMachine.RunningState);
+  BSP_UpGentleStatus(gMotorMachine.GentleSensorFlag);
+  BSP_UpPressureWaveCondition(gMotorMachine.AirSensorFlag);
 }
 /* USER CODE END 4 */
 

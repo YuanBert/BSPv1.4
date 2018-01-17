@@ -1,7 +1,7 @@
 /**
   ******************************************************************************
-  * File Name          : bsp_common.h
-  * Description        : 
+  * File Name          : bsp_log.h
+  * Description        : about log informations
   *
   ******************************************************************************
   ** This notice applies to any and all portions of this file
@@ -37,74 +37,37 @@
   ******************************************************************************
   */
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __bsp_common_H
-#define __bsp_common_H
+#ifndef __bsp_log_H
+#define __bsp_log_H
 #ifdef __cplusplus
  extern "C" {
 #endif
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "stm32f1xx_hal.h"
+#include "bsp_common.h"
+#include "BSP_DAC5571.h"
 
-#define RunningLED_OFF                  GPIO_PIN_SET
-#define RunningLED_ON                   GPIO_PIN_RESET
-#define CommunicationLED_OFF            GPIO_PIN_SET
-#define CommunicationLED_ON             GPIO_PIN_RESET
-#define MCUAtmosphereLEDG_ON            GPIO_PIN_SET
-#define MCUAtmosphereLEDG_OFF           GPIO_PIN_RESET
-#define MCUAtmosphereLEDR_ON            GPIO_PIN_SET
-#define MCUAtmosphereLEDR_OFF           GPIO_PIN_RESET
+ void BSP_UpDeviceID(uint32_t deviceID);
+ void BSP_UpCurrentPeak(uint16_t tCurrentPeakValue);
+ void BSP_UpAtmosphereStatus(uint8_t tMode);
+ void BSP_UpDoorOpenSpeed(uint8_t tSpeed);
+ void BSP_UpMotorSpeed(uint16_t tMotorSpeed);
+ void BSP_UpMotorStatus(uint8_t tMotorStatus);
+ void BSP_UpDoorOpenMode(uint8_t tOpenMode);
+ void BSP_UpGentleStatus(uint8_t tStatus);
+ void BSP_UpPressureWaveCondition(uint8_t tStatus);
+ void BSP_UpRadarParams(uint8_t* pData);
+ void BSP_UpRadarStatus(uint8_t* pData);
    
-   /** enum: BSP_StatusTypeDef
-   **
-   ** DESCRIPTION:
-   **  --µ¿’¢∞Â∞Â¿‡–Õ
-   **
-   ** CREATED: 2017/12/7, by bert
-   **
-   ** FILE: 
-   **
-   ** AUTHOR: Bert.Zhang
-   ********************************************************************************
-   */
-   typedef enum
-   {
-     BSP_OK       = 0x00U,
-     BSP_ERROR    = 0x01U,
-     BSP_BUSY     = 0x02U,
-     BSP_TIMEOUT  = 0x03U,
-     BSP_NOCMD    = 0x04U
-   }BSP_StatusTypeDef;
-
-/*******************************************************************************
-** struct: sGpioStatusDetection
-**
-** DESCRIPTION:
-**  --gpio status 
-**
-** CREATED: 2017/12/26, by bert
-**
-** FILE: 
-**
-** AUTHOR: Bert.Zhang
-********************************************************************************
-*/
-struct sGpioStatusDetection
-{
-  uint8_t   GpioCurrentReadVal;                 //Current GPIO value
-  uint8_t   GpioLastReadVal;                    //Last GPIO value
-  uint8_t   GpioFilterCnt;                      //Filter times
-  uint16_t  GpioFilterCntSum;
-  uint8_t   GpioStatusVal;                      //GPIO true logic state
-  uint8_t   GpioCheckedFlag;                    //vehicle is stilled Flag
-  uint8_t   GpioSendDataFlag;                   //Send data flag,it is zero if data been sent within asingle logic ,
-                                                //and set to one in the next logic
-  uint32_t  GpioValidLogicTimeCnt;              //Gpio vaild logic time counter
-}; 
-
-typedef struct sGpioStatusDetection  GPIOSTATUSDETECTION, *pGPIOSTATUSDETECTION;
-
+ BSP_StatusTypeDef BSP_ReportLogInfo(void);
+ 
+/* USER CODE BEGIN Includes */
+/* USER CODE END Includes */
+/* USER CODE BEGIN Private defines */
+/* USER CODE END Private defines */
+/* USER CODE BEGIN Prototypes */
+/* USER CODE END Prototypes */
 #ifdef __cplusplus
 }
 #endif
-#endif /*__bsp_common_H */
+#endif /*__bsp_log_H */
