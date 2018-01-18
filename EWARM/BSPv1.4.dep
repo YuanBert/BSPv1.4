@@ -5,6 +5,7 @@
     <configuration>
         <name>BSPv1.4</name>
         <outputs>
+<<<<<<< HEAD
             <file>$PROJ_DIR$\..\Src\bsp_motor.c</file>
             <file>$PROJ_DIR$\..\Src\BSP_DAC5571.c</file>
             <file>$PROJ_DIR$\..\Src\bsp_gentlesensor.c</file>
@@ -207,17 +208,222 @@
             <file>$TOOLKIT_DIR$\inc\c\DLib_Product.h</file>
             <file>$TOOLKIT_DIR$\lib\dl7M_tlf.a</file>
             <file>$TOOLKIT_DIR$\lib\rt7M_tl.a</file>
+=======
+            <file>$PROJ_DIR$\..\Src\system_stm32f1xx.c</file>
+            <file>$PROJ_DIR$\..\Src\bsp_protocol.c</file>
+            <file>$PROJ_DIR$\..\Src\main.c</file>
+            <file>$PROJ_DIR$\..\Src\spi.c</file>
+            <file>$PROJ_DIR$\..\Src\stm32f1xx_hal_msp.c</file>
+            <file>$PROJ_DIR$\startup_stm32f103xe.s</file>
+            <file>$PROJ_DIR$\..\Src\adc.c</file>
+            <file>$PROJ_DIR$\..\Src\gpio.c</file>
+            <file>$PROJ_DIR$\..\Src\bsp_gentlesensor.c</file>
+            <file>$PROJ_DIR$\..\Src\i2c.c</file>
+            <file>$PROJ_DIR$\..\Src\stm32f1xx_it.c</file>
+            <file>$PROJ_DIR$\..\Src\dma.c</file>
+            <file>$PROJ_DIR$\..\Src\tim.c</file>
+            <file>$PROJ_DIR$\..\Src\usart.c</file>
+            <file>$PROJ_DIR$\..\Src\BSP_DAC5571.c</file>
+            <file>$PROJ_DIR$\..\Src\bsp_led.c</file>
+            <file>$PROJ_DIR$\..\Src\bsp_motor.c</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal.c</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\adc.__cstat.et</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\bsp_motor.__cstat.et</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_tim.o</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_uart.__cstat.et</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_uart.pbi</file>
+            <file>$PROJ_DIR$\..\Inc\bsp_gentlesensor.h</file>
+            <file>$PROJ_DIR$\..\Drivers\CMSIS\Include\core_cm3.h</file>
+            <file>$PROJ_DIR$\..\Inc\i2c.h</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_rcc.o</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\main.__cstat.et</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_dma.__cstat.et</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\gpio.pbi</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_adc_ex.pbi</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\bsp_led.o</file>
+            <file>$PROJ_DIR$\..\Inc\main.h</file>
+            <file>$PROJ_DIR$\..\Inc\bsp_protocol.h</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\dma.o</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\i2c.pbi</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_adc_ex.h</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\bsp_gentlesensor.__cstat.et</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_spi.h</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\adc.o</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_spi_ex.pbi</file>
+            <file>$PROJ_DIR$\..\Inc\bsp_common.h</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\bsp_motor.pbi</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_spi_ex.o</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_gpio_ex.pbi</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\bsp_motor.o</file>
+            <file>$TOOLKIT_DIR$\inc\c\yvals.h</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\bsp_led.pbi</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\bsp_gentlesensor.o</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\BSP_DAC5571.o</file>
+            <file>$PROJ_DIR$\..\Inc\BSP_DAC5571.h</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_i2c.h</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_adc.o</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_adc.h</file>
+            <file>$PROJ_DIR$\BSPv1.4\Exe\BSPv1.4.hex</file>
+            <file>$PROJ_DIR$\..\Inc\bsp_led.h</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_gpio.o</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_dma.o</file>
+            <file>$PROJ_DIR$\..\Inc\spi.h</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_uart.o</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_rcc_ex.o</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_i2c.pbi</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\BSPv1.pbd</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\BSP_DAC5571.pbi</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_flash.__cstat.et</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_rcc_ex.__cstat.et</file>
+            <file>$PROJ_DIR$\stm32f103xe_flash.icf</file>
+            <file>$TOOLKIT_DIR$\inc\c\ysizet.h</file>
+            <file>$PROJ_DIR$\..\Inc\stm32f1xx_it.h</file>
+            <file>$TOOLKIT_DIR$\lib\m7M_tl.a</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_spi.__cstat.et</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_i2c.__cstat.et</file>
+            <file>$PROJ_DIR$\..\Inc\dma.h</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_gpio.__cstat.et</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\i2c.o</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\usart.pbi</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\bsp_protocol.o</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_tim.__cstat.et</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Config_Full.h</file>
+            <file>$PROJ_DIR$\..\Inc\usart.h</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_flash_ex.__cstat.et</file>
+            <file>$PROJ_DIR$\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f1xx.h</file>
+            <file>$PROJ_DIR$\BSPv1.4\List\BSPv1.4.map</file>
+            <file>$PROJ_DIR$\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\system_stm32f1xx.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\stdint.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\iccarm_builtin.h</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\bsp_protocol.__cstat.et</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Defaults.h</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\system_stm32f1xx.__cstat.et</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal.__cstat.et</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_adc_ex.o</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_tim_ex.__cstat.et</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\gpio.o</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_pwr.__cstat.et</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\bsp_led.__cstat.et</file>
+            <file>$PROJ_DIR$\BSPv1.4\Exe\BSPv1.4.out</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_flash.o</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\dma.__cstat.et</file>
+            <file>$PROJ_DIR$\..\Inc\adc.h</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash.h</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_adc.__cstat.et</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\spi.o</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_tim.pbi</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_rcc_ex.pbi</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_msp.__cstat.et</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_gpio_ex.__cstat.et</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_cortex.o</file>
+            <file>$PROJ_DIR$\..\Inc\bsp_motor.h</file>
+            <file>$PROJ_DIR$\..\Inc\tim.h</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_it.o</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash_ex.h</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\bsp_gentlesensor.pbi</file>
+            <file>$TOOLKIT_DIR$\inc\c\ycheck.h</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_cortex.pbi</file>
+            <file>$PROJ_DIR$\..\Inc\stm32f1xx_hal_conf.h</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_adc_ex.__cstat.et</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\system_stm32f1xx.pbi</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_msp.pbi</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Product.h</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_cortex.__cstat.et</file>
+            <file>$TOOLKIT_DIR$\lib\rt7M_tl.a</file>
+            <file>$PROJ_DIR$\..\Inc\gpio.h</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_rcc.__cstat.et</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\tim.pbi</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_dma.pbi</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\usart.__cstat.et</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\main.pbi</file>
+            <file>$TOOLKIT_DIR$\lib\dl7M_tlf.a</file>
+            <file>$PROJ_DIR$\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f103xe.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\stdio.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\cmsis_iar.h</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_i2c.c</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_spi.c</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_tim.c</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_pwr.c</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_flash_ex.c</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_uart.c</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_adc.c</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_tim_ex.c</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\adc.pbi</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\system_stm32f1xx.o</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_flash.c</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_rcc.c</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_spi.pbi</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\dma.pbi</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_adc.pbi</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_it.pbi</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_adc_ex.c</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_gpio_ex.c</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_dma.c</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_spi_ex.c</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_msp.o</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma_ex.h</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_rcc.pbi</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_flash_ex.pbi</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_gpio_ex.o</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_cortex.c</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_gpio.c</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_pwr.h</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_rcc_ex.c</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\bsp_protocol.pbi</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_spi_ex.__cstat.et</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\tim.__cstat.et</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma.h</file>
+            <file>$PROJ_DIR$\..\Drivers\CMSIS\Include\core_cmFunc.h</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_pwr.pbi</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_cortex.h</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_it.__cstat.et</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\tim.o</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_flash_ex.o</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\spi.__cstat.et</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_i2c.o</file>
+            <file>$PROJ_DIR$\..\Drivers\CMSIS\Include\core_cmInstr.h</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\usart.o</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal.o</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_tim_ex.pbi</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\main.o</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\gpio.__cstat.et</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\startup_stm32f103xe.o</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\i2c.__cstat.et</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_pwr.o</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\spi.pbi</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_spi.o</file>
+            <file>$TOOLKIT_DIR$\lib\shb_l.a</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal.pbi</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_flash.pbi</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_gpio.pbi</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\stm32f1xx_hal_tim_ex.o</file>
+            <file>$PROJ_DIR$\BSPv1.4\Obj\BSP_DAC5571.__cstat.et</file>
+>>>>>>> parent of 761ca02... 改进调速
         </outputs>
         <file>
             <name>[ROOT_NODE]</name>
             <outputs>
                 <tool>
                     <name>ILINK</name>
+<<<<<<< HEAD
                     <file> 80 42</file>
+=======
+                    <file> 98 85</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </outputs>
         </file>
         <file>
+<<<<<<< HEAD
             <name>$PROJ_DIR$\..\Src\bsp_motor.c</name>
             <outputs>
                 <tool>
@@ -231,20 +437,44 @@
                 <tool>
                     <name>BICOMP</name>
                     <file> 24</file>
+=======
+            <name>$PROJ_DIR$\..\Src\system_stm32f1xx.c</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 91</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 144</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 120</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< HEAD
                     <file> 103 164 194 143 140 67 57 111 28 189 193 48 181 70 199 165 149 138 16 52 180 78 101 188 47 25 183 9 79 163 88 106 40 187 11 139 59 34 198 69 41 36</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
                     <file> 70 40 48 67 198 25 34 193 181 47 183 143 140 79 11 57 189 165 149 164 41 188 9 88 187 139 111 28 199 194 69 101 180 52 16 138 78 106 36 103 163 59</file>
+=======
+                    <file> 84 132 24 87 116 49 90 81 122 179 134 88 171 86 147 118 33 182 29 133 70 107 161 40 170 157 173 56 38 102 114 54 164 41 181 35 169</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 132 24 122 49 29 87 179 116 90 81 134 33 84 147 86 171 88 118 182 161 170 173 56 102 54 164 41 181 169 107 133 70 38 35 40 157 114</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< HEAD
             <name>$PROJ_DIR$\..\Src\BSP_DAC5571.c</name>
             <outputs>
                 <tool>
@@ -258,20 +488,44 @@
                 <tool>
                     <name>BICOMP</name>
                     <file> 100</file>
+=======
+            <name>$PROJ_DIR$\..\Src\bsp_protocol.c</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 89</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 79</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 166</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< HEAD
                     <file> 50 164 194 143 140 67 57 111 28 189 193 48 181 70 199 165 149 138 16 52 180 78 101 188 47 25 183 9 79 163 88 106 40 187 11 139 59 34 36 49</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
                     <file> 11 49 143 140 165 149 79 57 189 59 25 40 34 193 181 70 48 67 194 188 9 88 187 139 111 28 199 163 164 36 101 180 52 16 138 78 50 47 183 106</file>
+=======
+                    <file> 34 33 147 118 182 29 84 132 24 87 116 49 90 81 122 179 134 88 171 86 133 70 107 161 40 170 157 173 56 38 102 114 54 164 41 181 35 169 125 82 44 111</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 173 34 24 29 164 132 122 114 147 161 102 181 82 182 170 56 54 41 169 84 87 179 116 90 81 49 33 111 125 44 118 107 133 86 171 134 88 70 40 157 38 35</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< HEAD
             <name>$PROJ_DIR$\..\Src\bsp_gentlesensor.c</name>
             <outputs>
                 <tool>
@@ -285,23 +539,47 @@
                 <tool>
                     <name>BICOMP</name>
                     <file> 185</file>
+=======
+            <name>$PROJ_DIR$\..\Src\main.c</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 27</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 185</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 130</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< HEAD
                     <file> 13 36 164 194 143 140 67 57 111 28 189 193 48 181 70 199 165 149 138 16 52 180 78 101 188 47 25 183 9 79 163 88 106 40 187 11 139 59 34 41 198 69 103</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
                     <file> 11 143 140 165 149 194 79 57 189 25 40 34 193 181 70 48 67 163 41 188 9 88 187 139 111 28 199 59 164 69 36 103 101 180 52 16 138 78 13 47 183 106 198</file>
+=======
+                    <file> 33 147 118 182 29 84 132 24 87 116 49 90 81 122 179 134 88 171 86 133 70 107 161 40 170 157 173 56 38 102 114 54 164 41 181 35 169 101 75 25 61 112 82 125 34 44 23 111 58 53</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 102 33 125 161 181 38 29 82 25 111 173 164 132 24 122 147 44 101 112 23 53 182 170 56 54 41 169 84 87 179 116 90 81 35 75 61 34 58 118 107 133 86 171 49 134 88 70 40 157 114</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\startup_stm32f103xe.s</name>
+            <name>$PROJ_DIR$\..\Src\spi.c</name>
             <outputs>
                 <tool>
+<<<<<<< HEAD
                     <name>AARM</name>
                     <file> 20</file>
                 </tool>
@@ -321,20 +599,41 @@
                 <tool>
                     <name>BICOMP</name>
                     <file> 110</file>
+=======
+                    <name>__cstat</name>
+                    <file> 177</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 104</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 190</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< HEAD
                     <file> 89 194 143 164 140 67 57 111 28 189 193 48 181 70 199 165 149 138 16 52 180 78 101 188 47 25 183 9 79 163 88 106 40 187 11 139 59 34 198 94</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
                     <file> 67 193 111 28 199 59 94 164 57 189 165 181 70 149 48 163 198 194 143 140 188 25 9 79 88 40 187 11 139 34 101 180 52 16 138 78 89 47 183 106</file>
+=======
+                    <file> 61 147 118 33 182 29 84 132 24 87 116 49 90 81 122 179 134 88 171 86 133 70 107 161 40 170 157 173 56 38 102 114 54 164 41 181 35 169 125</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 132 122 24 29 116 114 33 84 87 179 90 81 134 49 125 147 118 182 161 170 173 56 102 54 164 41 181 169 107 133 86 171 88 70 40 157 61 38 35</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< HEAD
             <name>$PROJ_DIR$\..\Src\bsp_led.c</name>
             <outputs>
                 <tool>
@@ -348,20 +647,44 @@
                 <tool>
                     <name>BICOMP</name>
                     <file> 61</file>
+=======
+            <name>$PROJ_DIR$\..\Src\stm32f1xx_hal_msp.c</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 108</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 156</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 121</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< HEAD
                     <file> 82 36 164 194 143 140 67 57 111 28 189 193 48 181 70 199 165 149 138 16 52 180 78 101 188 47 25 183 9 79 163 88 106 40 187 11 139 59 34 103 198 69 41</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
                     <file> 139 188 193 88 164 9 187 111 28 199 163 67 194 69 143 140 25 79 40 11 34 57 189 165 181 70 149 48 59 103 36 101 180 52 16 138 78 82 47 183 106 198 41</file>
+=======
+                    <file> 147 118 33 182 29 84 132 24 87 116 49 90 81 122 179 134 88 171 86 133 70 107 161 40 170 157 173 56 38 102 114 54 164 41 181 35 169</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 102 49 70 161 181 87 173 164 133 147 171 134 88 118 182 170 56 54 41 169 29 107 86 116 33 84 132 24 179 90 81 122 38 35 40 157 114</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< HEAD
             <name>$PROJ_DIR$\..\Src\bsp_log.c</name>
             <outputs>
                 <tool>
@@ -398,20 +721,53 @@
                 <tool>
                     <name>BICOMP</name>
                     <file> 176</file>
+=======
+            <name>$PROJ_DIR$\startup_stm32f103xe.s</name>
+            <outputs>
+                <tool>
+                    <name>AARM</name>
+                    <file> 187</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Src\adc.c</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 18</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 42</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 143</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< HEAD
                     <file> 41 164 194 143 140 67 57 111 28 189 193 48 181 70 199 165 149 138 16 52 180 78 101 188 47 25 183 9 79 163 88 106 40 187 11 139 59 34 198 69 36 103</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
                     <file> 9 41 28 67 187 111 199 106 194 188 88 139 69 140 25 79 40 11 34 57 189 165 193 181 70 48 164 103 198 36 143 101 180 52 16 149 138 78 47 183 163 59</file>
+=======
+                    <file> 101 147 118 33 182 29 84 132 24 87 116 49 90 81 122 179 134 88 171 86 133 70 107 161 40 170 157 173 56 38 102 114 54 164 41 181 35 169 125 75</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 29 116 132 24 122 35 75 33 84 87 179 90 81 134 49 38 125 147 118 182 161 170 173 56 102 54 164 41 181 169 107 133 86 171 88 70 101 40 157 114</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< HEAD
             <name>$PROJ_DIR$\..\Src\dma.c</name>
             <outputs>
                 <tool>
@@ -425,20 +781,44 @@
                 <tool>
                     <name>BICOMP</name>
                     <file> 154</file>
+=======
+            <name>$PROJ_DIR$\..\Src\gpio.c</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 186</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 95</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 30</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< HEAD
                     <file> 94 194 143 164 140 67 57 111 28 189 193 48 181 70 199 165 149 138 16 52 180 78 101 188 47 25 183 9 79 163 88 106 40 187 11 139 59 34</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
                     <file> 70 48 67 193 181 164 57 189 165 149 111 28 199 194 143 140 188 25 9 79 88 40 187 11 139 34 101 180 52 16 138 78 163 59 94 47 183 106</file>
+=======
+                    <file> 125 147 118 33 182 29 84 132 24 87 116 49 90 81 122 179 134 88 171 86 133 70 107 161 40 170 157 173 56 38 102 114 54 164 41 181 35 169</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 116 90 81 49 29 33 84 87 179 134 132 24 122 147 118 182 161 170 173 56 102 54 164 41 181 169 107 133 86 171 88 70 38 35 125 40 157 114</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< HEAD
             <name>$PROJ_DIR$\BSPv1.4\Exe\BSPv1.4.out</name>
             <outputs>
                 <tool>
@@ -471,20 +851,44 @@
                 <tool>
                     <name>BICOMP</name>
                     <file> 37</file>
+=======
+            <name>$PROJ_DIR$\..\Src\bsp_gentlesensor.c</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 39</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 51</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 115</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< HEAD
                     <file> 194 143 164 140 67 57 111 28 189 193 48 181 70 199 165 149 138 16 52 180 78 101 188 47 25 183 9 79 163 88 106 40 187 11 139 59 34</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
                     <file> 165 164 57 189 48 67 193 181 70 111 28 199 149 143 140 188 25 9 79 88 40 187 11 139 34 101 180 194 52 16 138 163 59 78 47 183 106</file>
+=======
+                    <file> 23 44 33 147 118 182 29 84 132 24 87 116 49 90 81 122 179 134 88 171 86 133 70 107 161 40 170 157 173 56 38 102 114 54 164 41 181 35 169 34 125 82 111</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 41 118 182 179 134 147 56 84 87 170 54 169 116 90 81 49 29 38 34 161 173 102 164 181 132 24 122 35 33 82 44 111 107 133 86 171 88 70 23 40 157 114 125</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< HEAD
             <name>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_rcc.c</name>
             <outputs>
                 <tool>
@@ -498,20 +902,44 @@
                 <tool>
                     <name>BICOMP</name>
                     <file> 195</file>
+=======
+            <name>$PROJ_DIR$\..\Src\i2c.c</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 188</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 77</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 37</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< HEAD
                     <file> 194 143 164 140 67 57 111 28 189 193 48 181 70 199 165 149 138 16 52 180 78 101 188 47 25 183 9 79 163 88 106 40 187 11 139 59 34</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
                     <file> 52 34 67 25 40 101 48 143 140 79 11 188 9 88 187 139 180 194 189 16 149 138 164 57 111 28 165 193 181 70 199 163 59 78 47 183 106</file>
+=======
+                    <file> 25 147 118 33 182 29 84 132 24 87 116 49 90 81 122 179 134 88 171 86 133 70 107 161 40 170 157 173 56 38 102 114 54 164 41 181 35 169 125</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 33 84 87 179 134 29 116 90 81 49 114 132 24 122 125 147 118 182 161 170 173 56 102 54 164 41 181 169 107 133 86 171 88 70 40 157 25 38 35</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< HEAD
             <name>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_adc_ex.c</name>
             <outputs>
                 <tool>
@@ -525,20 +953,67 @@
                 <tool>
                     <name>BICOMP</name>
                     <file> 53</file>
+=======
+            <name>$PROJ_DIR$\..\Src\stm32f1xx_it.c</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 174</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 113</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 151</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+                    <file> 147 118 33 182 29 84 132 24 87 116 49 90 81 122 179 134 88 171 86 133 70 107 161 40 170 157 173 56 38 102 114 54 164 41 181 35 169 71</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Src\dma.c</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 100</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 36</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 149</file>
+>>>>>>> parent of 761ca02... 改进调速
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+<<<<<<< HEAD
                     <file> 194 143 164 140 67 57 111 28 189 193 48 181 70 199 165 149 138 16 52 180 78 101 188 47 25 183 9 79 163 88 106 40 187 11 139 59 34</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
                     <file> 165 164 57 189 48 67 193 181 70 111 28 199 149 143 140 188 25 9 79 88 40 187 11 139 34 101 180 194 52 16 138 163 59 78 47 183 106</file>
+=======
+                    <file> 75 147 118 33 182 29 84 132 24 87 116 49 90 81 122 179 134 88 171 86 133 70 107 161 40 170 157 173 56 38 102 114 54 164 41 181 35 169</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 81 49 29 116 90 33 84 87 179 134 132 24 122 147 118 182 161 170 173 56 102 54 164 41 181 169 107 133 86 171 88 70 38 35 75 40 157 114</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< HEAD
             <name>$PROJ_DIR$\..\Src\usart.c</name>
             <outputs>
                 <tool>
@@ -552,20 +1027,44 @@
                 <tool>
                     <name>BICOMP</name>
                     <file> 92</file>
+=======
+            <name>$PROJ_DIR$\..\Src\tim.c</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 168</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 175</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 127</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< HEAD
                     <file> 69 194 143 164 140 67 57 111 28 189 193 48 181 70 199 165 149 138 16 52 180 78 101 188 47 25 183 9 79 163 88 106 40 187 11 139 59 34 198 94</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
                     <file> 101 67 194 40 193 25 34 52 143 140 79 11 59 94 188 9 88 187 139 180 189 16 48 149 138 78 163 164 198 57 111 28 165 181 70 199 69 47 183 106</file>
+=======
+                    <file> 112 147 118 33 182 29 84 132 24 87 116 49 90 81 122 179 134 88 171 86 133 70 107 161 40 170 157 173 56 38 102 114 54 164 41 181 35 169</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 56 116 118 182 41 49 147 170 54 169 29 107 86 161 173 102 164 181 133 87 171 134 88 70 33 84 132 24 179 90 81 122 38 35 112 40 157 114</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< HEAD
             <name>$PROJ_DIR$\..\Src\main.c</name>
             <outputs>
                 <tool>
@@ -579,20 +1078,44 @@
                 <tool>
                     <name>BICOMP</name>
                     <file> 151</file>
+=======
+            <name>$PROJ_DIR$\..\Src\usart.c</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 129</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 180</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 78</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< HEAD
                     <file> 164 194 143 140 67 57 111 28 189 193 48 181 70 199 165 149 138 16 52 180 78 101 188 47 25 183 9 79 163 88 106 40 187 11 139 59 34 89 94 49 77 177 69 198 41 36 13 103 82 50 74</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
                     <file> 67 198 41 49 103 143 101 52 78 194 89 177 13 50 164 180 189 16 48 149 138 47 183 36 94 77 69 82 74 140 188 25 9 79 88 40 187 11 139 34 57 111 28 165 193 181 70 199 106 163 59</file>
+=======
+                    <file> 82 147 118 33 182 29 84 132 24 87 116 49 90 81 122 179 134 88 171 86 133 70 107 161 40 170 157 173 56 38 102 114 54 164 41 181 35 169 125 75</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 107 29 147 54 116 170 169 86 118 182 56 41 35 75 161 173 102 164 181 133 87 171 49 134 88 70 38 33 125 84 132 24 179 90 81 122 82 40 157 114</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< HEAD
             <name>$PROJ_DIR$\..\Src\stm32f1xx_hal_msp.c</name>
             <outputs>
                 <tool>
@@ -602,6 +1125,17 @@
                 <tool>
                     <name>ICCARM</name>
                     <file> 197</file>
+=======
+            <name>$PROJ_DIR$\..\Src\BSP_DAC5571.c</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 197</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 52</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
                 <tool>
                     <name>BICOMP</name>
@@ -611,15 +1145,24 @@
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< HEAD
                     <file> 194 143 164 140 67 57 111 28 189 193 48 181 70 199 165 149 138 16 52 180 78 101 188 47 25 183 9 79 163 88 106 40 187 11 139 59 34</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
                     <file> 88 48 78 188 139 189 9 187 180 194 16 149 138 143 140 25 79 40 11 34 67 101 52 193 164 57 111 28 165 181 70 199 163 59 47 183 106</file>
+=======
+                    <file> 53 33 147 118 182 29 84 132 24 87 116 49 90 81 122 179 134 88 171 86 133 70 107 161 40 170 157 173 56 38 102 114 54 164 41 181 35 169 44 25</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 41 25 118 182 179 134 56 84 87 35 170 54 169 116 90 81 49 29 147 161 173 102 164 181 132 24 122 38 33 44 107 133 86 171 88 70 53 40 157 114</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< HEAD
             <name>$PROJ_DIR$\..\Src\spi.c</name>
             <outputs>
                 <tool>
@@ -633,20 +1176,44 @@
                 <tool>
                     <name>BICOMP</name>
                     <file> 26</file>
+=======
+            <name>$PROJ_DIR$\..\Src\bsp_led.c</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 97</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 32</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 50</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< HEAD
                     <file> 77 194 143 164 140 67 57 111 28 189 193 48 181 70 199 165 149 138 16 52 180 78 101 188 47 25 183 9 79 163 88 106 40 187 11 139 59 34 198</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
                     <file> 111 199 28 67 193 106 164 57 189 165 181 70 149 48 198 194 143 140 188 25 9 79 88 40 187 11 139 34 101 180 52 16 138 78 47 183 77 163 59</file>
+=======
+                    <file> 58 44 33 147 118 182 29 84 132 24 87 116 49 90 81 122 179 134 88 171 86 133 70 107 161 40 170 157 173 56 38 102 114 54 164 41 181 35 169 111 125 82 34</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 181 161 116 102 33 173 164 132 24 122 38 29 147 82 118 182 170 56 54 41 169 84 87 179 90 81 134 49 35 111 44 107 133 86 171 88 70 58 40 157 114 125 34</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< HEAD
             <name>$PROJ_DIR$\..\Src\system_stm32f1xx.c</name>
             <outputs>
                 <tool>
@@ -660,20 +1227,44 @@
                 <tool>
                     <name>BICOMP</name>
                     <file> 147</file>
+=======
+            <name>$PROJ_DIR$\..\Src\bsp_motor.c</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 19</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 48</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 45</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< HEAD
                     <file> 57 111 28 189 193 48 181 70 199 165 149 138 16 52 194 143 164 140 67 180 78 101 188 47 25 183 9 79 163 88 106 40 187 11 139 59 34</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
                     <file> 111 28 199 48 67 189 165 193 181 70 149 164 57 194 52 16 138 143 140 188 25 9 79 88 40 187 11 139 34 101 180 78 163 59 47 183 106</file>
+=======
+                    <file> 111 33 147 118 182 29 84 132 24 87 116 49 90 81 122 179 134 88 171 86 133 70 107 161 40 170 157 173 56 38 102 114 54 164 41 181 35 169 125 82 34 44</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 81 54 49 29 125 170 169 116 90 40 157 118 182 56 41 84 87 179 134 33 34 161 173 102 164 181 132 24 122 147 82 107 133 86 171 88 70 114 44 111 38 35</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< HEAD
             <name>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_gpio.c</name>
             <outputs>
                 <tool>
@@ -687,20 +1278,44 @@
                 <tool>
                     <name>BICOMP</name>
                     <file> 166</file>
+=======
+            <name>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal.c</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 92</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 183</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 193</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< HEAD
                     <file> 194 143 164 140 67 57 111 28 189 193 48 181 70 199 165 149 138 16 52 180 78 101 188 47 25 183 9 79 163 88 106 40 187 11 139 59 34</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
                     <file> 16 187 149 138 9 180 194 67 188 88 139 189 48 78 143 140 25 79 40 11 34 101 52 193 164 57 111 28 165 181 70 199 163 59 47 183 106</file>
+=======
+                    <file> 147 118 33 182 29 84 132 24 87 116 49 90 81 122 179 134 88 171 86 133 70 107 161 40 170 157 173 56 38 102 114 54 164 41 181 35 169</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 116 132 24 122 33 84 87 179 90 81 134 49 29 118 182 161 170 173 56 102 54 164 41 181 169 107 133 147 86 171 88 70 38 35 40 157 114</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< HEAD
             <name>$PROJ_DIR$\..\Src\i2c.c</name>
             <outputs>
                 <tool>
@@ -714,20 +1329,37 @@
                 <tool>
                     <name>BICOMP</name>
                     <file> 30</file>
+=======
+            <name>$PROJ_DIR$\BSPv1.4\Exe\BSPv1.4.out</name>
+            <outputs>
+                <tool>
+                    <name>ILINK</name>
+                    <file> 85</file>
+                </tool>
+                <tool>
+                    <name>OBJCOPY</name>
+                    <file> 57</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </outputs>
             <inputs>
                 <tool>
+<<<<<<< HEAD
                     <name>ICCARM</name>
                     <file> 49 194 143 164 140 67 57 111 28 189 193 48 181 70 199 165 149 138 16 52 180 78 101 188 47 25 183 9 79 163 88 106 40 187 11 139 59 34 198</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
                     <file> 164 57 189 165 149 67 193 181 70 48 106 111 28 199 198 194 143 140 188 25 9 79 88 40 187 11 139 34 101 180 52 16 138 78 47 183 49 163 59</file>
+=======
+                    <name>ILINK</name>
+                    <file> 69 42 52 51 32 48 79 36 95 77 185 104 187 183 55 93 110 60 99 176 59 160 178 156 189 26 63 191 46 20 196 62 113 144 175 180 192 124 72 131</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< HEAD
             <name>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal.c</name>
             <outputs>
                 <tool>
@@ -741,20 +1373,44 @@
                 <tool>
                     <name>BICOMP</name>
                     <file> 156</file>
+=======
+            <name>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_i2c.c</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 74</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 178</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 64</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< HEAD
                     <file> 194 143 164 140 67 57 111 28 189 193 48 181 70 199 165 149 138 16 52 180 78 101 188 47 25 183 9 79 163 88 106 40 187 11 139 59 34</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
                     <file> 193 111 28 199 164 57 189 165 181 70 149 48 67 143 140 188 25 9 79 88 40 187 11 139 34 101 180 194 52 16 138 78 163 59 47 183 106</file>
+=======
+                    <file> 147 118 33 182 29 84 132 24 87 116 49 90 81 122 179 134 88 171 86 133 70 107 161 40 170 157 173 56 38 102 114 54 164 41 181 35 169</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 24 132 81 49 29 118 116 90 33 84 87 179 134 182 161 170 173 56 102 54 164 41 181 169 107 133 147 86 171 122 38 35 88 70 40 157 114</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< HEAD
             <name>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_flash_ex.c</name>
             <outputs>
                 <tool>
@@ -768,20 +1424,44 @@
                 <tool>
                     <name>BICOMP</name>
                     <file> 175</file>
+=======
+            <name>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_spi.c</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 73</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 191</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 148</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< HEAD
                     <file> 194 143 164 140 67 57 111 28 189 193 48 181 70 199 165 149 138 16 52 180 78 101 188 47 25 183 9 79 163 88 106 40 187 11 139 59 34</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
                     <file> 67 111 28 199 164 57 189 165 193 181 70 149 48 143 140 188 25 9 79 88 40 187 11 139 34 101 180 194 52 16 138 78 163 59 47 183 106</file>
+=======
+                    <file> 147 118 33 182 29 84 132 24 87 116 49 90 81 122 179 134 88 171 86 133 70 107 161 40 170 157 173 56 38 102 114 54 164 41 181 35 169</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 24 132 122 49 29 118 33 84 87 179 116 90 81 134 182 161 170 173 56 102 54 164 41 181 169 107 133 147 86 171 88 38 35 70 40 157 114</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< HEAD
             <name>$PROJ_DIR$\..\Src\stm32f1xx_it.c</name>
             <outputs>
                 <tool>
@@ -795,12 +1475,35 @@
                 <tool>
                     <name>BICOMP</name>
                     <file> 168</file>
+=======
+            <name>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_tim.c</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 80</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 20</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 105</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< HEAD
                     <file> 194 143 164 140 67 57 111 28 189 193 48 181 70 199 165 149 138 16 52 180 78 101 188 47 25 183 9 79 163 88 106 40 187 11 139 59 34 63</file>
+=======
+                    <file> 147 118 33 182 29 84 132 24 87 116 49 90 81 122 179 134 88 171 86 133 70 107 161 40 170 157 173 56 38 102 114 54 164 41 181 35 169</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 87 49 181 161 102 81 29 173 164 133 147 171 90 182 170 56 54 41 169 107 86 134 118 33 84 132 24 179 116 122 38 35 88 70 40 157 114</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </inputs>
         </file>
@@ -809,6 +1512,7 @@
             <outputs>
                 <tool>
                     <name>__cstat</name>
+<<<<<<< HEAD
                     <file> 159</file>
                 </tool>
                 <tool>
@@ -818,20 +1522,40 @@
                 <tool>
                     <name>BICOMP</name>
                     <file> 196</file>
+=======
+                    <file> 96</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 189</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 172</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< HEAD
                     <file> 194 143 164 140 67 57 111 28 189 193 48 181 70 199 165 149 138 16 52 180 78 101 188 47 25 183 9 79 163 88 106 40 187 11 139 59 34</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
                     <file> 88 78 48 188 139 189 9 187 180 194 16 149 138 143 140 25 79 40 11 34 67 101 52 193 164 57 111 28 165 181 70 199 163 59 47 183 106</file>
+=======
+                    <file> 147 118 33 182 29 84 132 24 87 116 49 90 81 122 179 134 88 171 86 133 70 107 161 40 170 157 173 56 38 102 114 54 164 41 181 35 169</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 87 33 84 179 134 29 116 90 81 49 132 24 122 118 182 161 170 173 56 102 54 164 41 181 169 107 133 147 86 171 88 70 38 35 40 157 114</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< HEAD
             <name>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_dma.c</name>
             <outputs>
                 <tool>
@@ -845,20 +1569,44 @@
                 <tool>
                     <name>BICOMP</name>
                     <file> 160</file>
+=======
+            <name>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_flash_ex.c</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 83</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 176</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 159</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< HEAD
                     <file> 194 143 164 140 67 57 111 28 189 193 48 181 70 199 165 149 138 16 52 180 78 101 188 47 25 183 9 79 163 88 106 40 187 11 139 59 34</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
                     <file> 9 180 194 187 16 149 138 67 188 88 139 189 48 78 143 140 25 79 40 11 34 101 52 193 164 57 111 28 165 181 70 199 163 59 47 183 106</file>
+=======
+                    <file> 147 118 33 182 29 84 132 24 87 116 49 90 81 122 179 134 88 171 86 133 70 107 161 40 170 157 173 56 38 102 114 54 164 41 181 35 169</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 29 132 24 122 33 84 87 179 116 90 81 134 49 118 182 161 170 173 56 102 54 164 41 181 169 107 133 147 86 171 88 70 38 35 40 157 114</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< HEAD
             <name>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_gpio_ex.c</name>
             <outputs>
                 <tool>
@@ -872,20 +1620,44 @@
                 <tool>
                     <name>BICOMP</name>
                     <file> 66</file>
+=======
+            <name>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_uart.c</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 21</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 62</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 22</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< HEAD
                     <file> 194 143 164 140 67 57 111 28 189 193 48 181 70 199 165 149 138 16 52 180 78 101 188 47 25 183 9 79 163 88 106 40 187 11 139 59 34</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
                     <file> 11 143 140 48 79 193 25 40 34 67 101 52 188 9 88 187 139 180 194 189 16 149 138 78 164 57 111 28 165 181 70 199 163 59 47 183 106</file>
+=======
+                    <file> 147 118 33 182 29 84 132 24 87 116 49 90 81 122 179 134 88 171 86 133 70 107 161 40 170 157 173 56 38 102 114 54 164 41 181 35 169</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 182 41 56 49 29 170 54 169 107 86 161 173 102 164 181 133 147 87 171 134 88 118 33 84 132 24 179 116 90 81 122 38 35 70 40 157 114</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< HEAD
             <name>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_i2c.c</name>
             <outputs>
                 <tool>
@@ -899,20 +1671,44 @@
                 <tool>
                     <name>BICOMP</name>
                     <file> 76</file>
+=======
+            <name>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_adc.c</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 103</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 55</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 150</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< HEAD
                     <file> 194 143 164 140 67 57 111 28 189 193 48 181 70 199 165 149 138 16 52 180 78 101 188 47 25 183 9 79 163 88 106 40 187 11 139 59 34</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
                     <file> 28 111 70 48 67 143 193 181 164 57 189 165 149 140 188 25 9 79 88 40 187 11 139 34 101 180 194 52 16 199 163 59 138 78 47 183 106</file>
+=======
+                    <file> 147 118 33 182 29 84 132 24 87 116 49 90 81 122 179 134 88 171 86 133 70 107 161 40 170 157 173 56 38 102 114 54 164 41 181 35 169</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 102 49 161 181 87 29 173 164 133 147 171 134 88 118 182 170 56 54 41 169 107 86 33 84 132 24 179 116 90 81 122 38 35 70 40 157 114</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< HEAD
             <name>$PROJ_DIR$\..\Src\gpio.c</name>
             <outputs>
                 <tool>
@@ -926,20 +1722,44 @@
                 <tool>
                     <name>BICOMP</name>
                     <file> 62</file>
+=======
+            <name>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_tim_ex.c</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 94</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 196</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 184</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< HEAD
                     <file> 198 194 143 164 140 67 57 111 28 189 193 48 181 70 199 165 149 138 16 52 180 78 101 188 47 25 183 9 79 163 88 106 40 187 11 139 59 34</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
                     <file> 193 181 70 48 67 164 57 189 165 149 111 28 199 194 143 140 188 25 9 79 88 40 187 11 139 34 101 180 52 16 138 78 163 59 198 47 183 106</file>
+=======
+                    <file> 147 118 33 182 29 84 132 24 87 116 49 90 81 122 179 134 88 171 86 133 70 107 161 40 170 157 173 56 38 102 114 54 164 41 181 35 169</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 179 33 84 87 49 29 116 90 81 132 24 122 134 118 182 161 170 173 56 102 54 164 41 181 169 107 133 147 86 171 88 38 35 70 40 157 114</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< HEAD
             <name>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_adc.c</name>
             <outputs>
                 <tool>
@@ -953,20 +1773,44 @@
                 <tool>
                     <name>BICOMP</name>
                     <file> 169</file>
+=======
+            <name>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_flash.c</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 67</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 99</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 194</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< HEAD
                     <file> 194 143 164 140 67 57 111 28 189 193 48 181 70 199 165 149 138 16 52 180 78 101 188 47 25 183 9 79 163 88 106 40 187 11 139 59 34</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
                     <file> 88 48 188 139 189 67 9 187 180 194 16 149 138 143 140 25 79 40 11 34 101 52 164 57 111 28 165 193 181 70 199 163 59 78 47 183 106</file>
+=======
+                    <file> 147 118 33 182 29 84 132 24 87 116 49 90 81 122 179 134 88 171 86 133 70 107 161 40 170 157 173 56 38 102 114 54 164 41 181 35 169</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 87 49 181 161 102 70 29 173 164 133 147 171 134 88 118 182 170 56 54 41 169 107 86 116 33 84 132 24 179 90 81 122 38 35 40 157 114</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< HEAD
             <name>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_flash.c</name>
             <outputs>
                 <tool>
@@ -980,20 +1824,44 @@
                 <tool>
                     <name>BICOMP</name>
                     <file> 141</file>
+=======
+            <name>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_rcc.c</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 126</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 26</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 158</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< HEAD
                     <file> 194 143 164 140 67 57 111 28 189 193 48 181 70 199 165 149 138 16 52 180 78 101 188 47 25 183 9 79 163 88 106 40 187 11 139 59 34</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
                     <file> 189 48 139 188 88 78 67 9 187 180 194 16 149 138 143 140 25 79 40 11 34 101 52 193 164 57 111 28 165 181 70 199 163 59 47 183 106</file>
+=======
+                    <file> 147 118 33 182 29 84 132 24 87 116 49 90 81 122 179 134 88 171 86 133 70 107 161 40 170 157 173 56 38 102 114 54 164 41 181 35 169</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 86 169 29 170 54 107 49 118 182 56 41 161 173 102 164 181 133 147 87 171 134 88 33 84 132 24 179 116 90 81 122 38 35 70 40 157 114</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< HEAD
             <name>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_pwr.c</name>
             <outputs>
                 <tool>
@@ -1007,20 +1875,44 @@
                 <tool>
                     <name>BICOMP</name>
                     <file> 19</file>
+=======
+            <name>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_adc_ex.c</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 119</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 93</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 31</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< HEAD
                     <file> 194 143 164 140 67 57 111 28 189 193 48 181 70 199 165 149 138 16 52 180 78 101 188 47 25 183 9 79 163 88 106 40 187 11 139 59 34</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
                     <file> 189 164 57 165 149 67 193 181 70 48 111 28 199 143 140 188 25 9 79 88 40 187 11 139 34 101 180 194 52 16 138 78 163 59 47 183 106</file>
+=======
+                    <file> 147 118 33 182 29 84 132 24 87 116 49 90 81 122 179 134 88 171 86 133 70 107 161 40 170 157 173 56 38 102 114 54 164 41 181 35 169</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 179 33 84 87 49 29 116 90 81 132 24 122 134 118 182 161 170 173 56 102 54 164 41 181 169 107 133 147 86 171 88 38 35 70 40 157 114</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< HEAD
             <name>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_rcc_ex.c</name>
             <outputs>
                 <tool>
@@ -1034,20 +1926,44 @@
                 <tool>
                     <name>BICOMP</name>
                     <file> 96</file>
+=======
+            <name>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_gpio_ex.c</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 109</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 160</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 47</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< HEAD
                     <file> 194 143 164 140 67 57 111 28 189 193 48 181 70 199 165 149 138 16 52 180 78 101 188 47 25 183 9 79 163 88 106 40 187 11 139 59 34</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
                     <file> 79 193 143 140 11 67 25 40 34 101 52 188 9 88 187 139 180 194 189 16 48 149 138 78 164 57 111 28 165 181 70 199 163 59 47 183 106</file>
+=======
+                    <file> 147 118 33 182 29 84 132 24 87 116 49 90 81 122 179 134 88 171 86 133 70 107 161 40 170 157 173 56 38 102 114 54 164 41 181 35 169</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 41 118 182 49 56 116 170 54 169 29 107 86 161 173 102 164 181 133 147 87 171 134 88 70 33 84 132 24 179 90 81 122 38 35 40 157 114</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< HEAD
             <name>$PROJ_DIR$\..\Src\tim.c</name>
             <outputs>
                 <tool>
@@ -1061,20 +1977,44 @@
                 <tool>
                     <name>BICOMP</name>
                     <file> 144</file>
+=======
+            <name>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_dma.c</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 28</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 60</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 128</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< HEAD
                     <file> 177 194 143 164 140 67 57 111 28 189 193 48 181 70 199 165 149 138 16 52 180 78 101 188 47 25 183 9 79 163 88 106 40 187 11 139 59 34</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
                     <file> 79 193 143 140 11 48 194 25 40 34 67 101 52 188 9 88 187 139 180 189 16 149 138 78 164 57 111 28 165 181 70 199 163 59 177 47 183 106</file>
+=======
+                    <file> 147 118 33 182 29 84 132 24 87 116 49 90 81 122 179 134 88 171 86 133 70 107 161 40 170 157 173 56 38 102 114 54 164 41 181 35 169</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 173 133 147 164 171 134 88 29 161 102 181 87 49 70 118 182 170 56 54 41 169 107 86 116 33 84 132 24 179 90 81 122 38 35 40 157 114</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< HEAD
             <name>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_spi.c</name>
             <outputs>
                 <tool>
@@ -1088,20 +2028,44 @@
                 <tool>
                     <name>BICOMP</name>
                     <file> 109</file>
+=======
+            <name>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_spi_ex.c</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 167</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 46</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 43</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< HEAD
                     <file> 194 143 164 140 67 57 111 28 189 193 48 181 70 199 165 149 138 16 52 180 78 101 188 47 25 183 9 79 163 88 106 40 187 11 139 59 34</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
                     <file> 28 111 199 48 67 143 164 57 189 165 193 181 70 149 140 188 25 9 79 88 40 187 11 139 34 101 180 194 52 16 138 163 59 78 47 183 106</file>
+=======
+                    <file> 147 118 33 182 29 84 132 24 87 116 49 90 81 122 179 134 88 171 86 133 70 107 161 40 170 157 173 56 38 102 114 54 164 41 181 35 169</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 116 132 24 122 33 84 87 179 90 81 134 49 29 118 182 161 170 173 56 102 54 164 41 181 169 107 133 147 86 171 88 70 38 35 40 157 114</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< HEAD
             <name>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_spi_ex.c</name>
             <outputs>
                 <tool>
@@ -1115,20 +2079,44 @@
                 <tool>
                     <name>BICOMP</name>
                     <file> 29</file>
+=======
+            <name>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_cortex.c</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 123</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 110</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 117</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< HEAD
                     <file> 194 143 164 140 67 57 111 28 189 193 48 181 70 199 165 149 138 16 52 180 78 101 188 47 25 183 9 79 163 88 106 40 187 11 139 59 34</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
                     <file> 193 111 28 199 164 57 189 165 181 70 149 48 67 143 140 188 25 9 79 88 40 187 11 139 34 101 180 194 52 16 138 78 163 59 47 183 106</file>
+=======
+                    <file> 147 118 33 182 29 84 132 24 87 116 49 90 81 122 179 134 88 171 86 133 70 107 161 40 170 157 173 56 38 102 114 54 164 41 181 35 169</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 102 70 49 161 181 87 173 164 133 147 171 134 88 118 182 170 56 54 41 169 29 107 86 116 33 84 132 24 179 90 81 122 38 35 40 157 114</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< HEAD
             <name>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_tim.c</name>
             <outputs>
                 <tool>
@@ -1142,20 +2130,44 @@
                 <tool>
                     <name>BICOMP</name>
                     <file> 190</file>
+=======
+            <name>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_gpio.c</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 76</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 59</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 195</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< HEAD
                     <file> 194 143 164 140 67 57 111 28 189 193 48 181 70 199 165 149 138 16 52 180 78 101 188 47 25 183 9 79 163 88 106 40 187 11 139 59 34</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
                     <file> 189 48 139 188 88 70 67 9 187 180 194 16 181 140 25 79 40 11 34 101 52 149 143 164 57 111 28 165 193 199 163 59 138 78 47 183 106</file>
+=======
+                    <file> 147 118 33 182 29 84 132 24 87 116 49 90 81 122 179 134 88 171 86 133 70 107 161 40 170 157 173 56 38 102 114 54 164 41 181 35 169</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 171 164 134 88 173 133 147 29 161 102 181 87 49 70 118 182 170 56 54 41 169 107 86 116 33 84 132 24 179 90 81 122 38 35 40 157 114</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< HEAD
             <name>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_uart.c</name>
             <outputs>
                 <tool>
@@ -1169,16 +2181,39 @@
                 <tool>
                     <name>BICOMP</name>
                     <file> 162</file>
+=======
+            <name>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_rcc_ex.c</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 68</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 63</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 106</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< HEAD
                     <file> 194 143 164 140 67 57 111 28 189 193 48 181 70 199 165 149 138 16 52 180 78 101 188 47 25 183 9 79 163 88 106 40 187 11 139 59 34</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
                     <file> 140 11 79 48 67 25 40 34 101 52 188 9 88 187 139 180 194 189 16 149 138 143 164 57 111 28 165 193 181 70 199 163 59 78 47 183 106</file>
+=======
+                    <file> 147 118 33 182 29 84 132 24 87 116 49 90 81 122 179 134 88 171 86 133 70 107 161 40 170 157 173 56 38 102 114 54 164 41 181 35 169</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 56 116 118 182 41 29 170 54 169 107 86 161 173 102 164 181 133 147 87 171 49 134 88 70 33 84 132 24 179 90 81 122 38 35 40 157 114</file>
+>>>>>>> parent of 761ca02... 改进调速
                 </tool>
             </inputs>
         </file>
