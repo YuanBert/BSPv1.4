@@ -12,11 +12,6 @@ E:\Users\bertz\Documents\GitHub\BSPv1.4\EWARM\BSPv1.4\Obj\gpio.pbi
 E:\Users\bertz\Documents\GitHub\BSPv1.4\EWARM\BSPv1.4\Obj\i2c.pbi
 E:\Users\bertz\Documents\GitHub\BSPv1.4\EWARM\BSPv1.4\Obj\main.pbi
 E:\Users\bertz\Documents\GitHub\BSPv1.4\EWARM\BSPv1.4\Obj\spi.pbi
-E:\Users\bertz\Documents\GitHub\BSPv1.4\EWARM\BSPv1.4\Obj\stm32f1xx_hal_msp.pbi
-E:\Users\bertz\Documents\GitHub\BSPv1.4\EWARM\BSPv1.4\Obj\stm32f1xx_it.pbi
-E:\Users\bertz\Documents\GitHub\BSPv1.4\EWARM\BSPv1.4\Obj\tim.pbi
-E:\Users\bertz\Documents\GitHub\BSPv1.4\EWARM\BSPv1.4\Obj\usart.pbi
-E:\Users\bertz\Documents\GitHub\BSPv1.4\EWARM\BSPv1.4\Obj\system_stm32f1xx.pbi
 E:\Users\bertz\Documents\GitHub\BSPv1.4\EWARM\BSPv1.4\Obj\stm32f1xx_hal.pbi
 E:\Users\bertz\Documents\GitHub\BSPv1.4\EWARM\BSPv1.4\Obj\stm32f1xx_hal_adc.pbi
 E:\Users\bertz\Documents\GitHub\BSPv1.4\EWARM\BSPv1.4\Obj\stm32f1xx_hal_adc_ex.pbi
@@ -27,6 +22,7 @@ E:\Users\bertz\Documents\GitHub\BSPv1.4\EWARM\BSPv1.4\Obj\stm32f1xx_hal_flash_ex
 E:\Users\bertz\Documents\GitHub\BSPv1.4\EWARM\BSPv1.4\Obj\stm32f1xx_hal_gpio.pbi
 E:\Users\bertz\Documents\GitHub\BSPv1.4\EWARM\BSPv1.4\Obj\stm32f1xx_hal_gpio_ex.pbi
 E:\Users\bertz\Documents\GitHub\BSPv1.4\EWARM\BSPv1.4\Obj\stm32f1xx_hal_i2c.pbi
+E:\Users\bertz\Documents\GitHub\BSPv1.4\EWARM\BSPv1.4\Obj\stm32f1xx_hal_msp.pbi
 E:\Users\bertz\Documents\GitHub\BSPv1.4\EWARM\BSPv1.4\Obj\stm32f1xx_hal_pwr.pbi
 E:\Users\bertz\Documents\GitHub\BSPv1.4\EWARM\BSPv1.4\Obj\stm32f1xx_hal_rcc.pbi
 E:\Users\bertz\Documents\GitHub\BSPv1.4\EWARM\BSPv1.4\Obj\stm32f1xx_hal_rcc_ex.pbi
@@ -35,6 +31,7 @@ E:\Users\bertz\Documents\GitHub\BSPv1.4\EWARM\BSPv1.4\Obj\stm32f1xx_hal_spi_ex.p
 E:\Users\bertz\Documents\GitHub\BSPv1.4\EWARM\BSPv1.4\Obj\stm32f1xx_hal_tim.pbi
 E:\Users\bertz\Documents\GitHub\BSPv1.4\EWARM\BSPv1.4\Obj\stm32f1xx_hal_tim_ex.pbi
 E:\Users\bertz\Documents\GitHub\BSPv1.4\EWARM\BSPv1.4\Obj\stm32f1xx_hal_uart.pbi
+<<<<<<< HEAD
 =======
 ﻿E:\Users\Zgeny\Documents\GitHub\BSPv1.4\EWARM\BSPv1.4\Obj\BSPv1.pbd
 E:\Users\Zgeny\Documents\GitHub\BSPv1.4\EWARM\BSPv1.4\Obj\adc.pbi
@@ -72,3 +69,9 @@ E:\Users\Zgeny\Documents\GitHub\BSPv1.4\EWARM\BSPv1.4\Obj\stm32f1xx_hal_tim.pbi
 E:\Users\Zgeny\Documents\GitHub\BSPv1.4\EWARM\BSPv1.4\Obj\stm32f1xx_hal_tim_ex.pbi
 E:\Users\Zgeny\Documents\GitHub\BSPv1.4\EWARM\BSPv1.4\Obj\stm32f1xx_hal_uart.pbi
 >>>>>>> parent of 761ca02... 改进调速
+=======
+E:\Users\bertz\Documents\GitHub\BSPv1.4\EWARM\BSPv1.4\Obj\stm32f1xx_it.pbi
+E:\Users\bertz\Documents\GitHub\BSPv1.4\EWARM\BSPv1.4\Obj\system_stm32f1xx.pbi
+E:\Users\bertz\Documents\GitHub\BSPv1.4\EWARM\BSPv1.4\Obj\tim.pbi
+E:\Users\bertz\Documents\GitHub\BSPv1.4\EWARM\BSPv1.4\Obj\usart.pbi
+>>>>>>> parent of 8244563... 完成了日志上报，可能存在bug，闸机可能无法正常打开

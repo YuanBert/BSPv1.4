@@ -48,8 +48,6 @@
   /* Includes ------------------------------------------------------------------*/
 #include "bsp_led.h"
 #include "bsp_motor.h"
-    
-extern uint8_t         gComingCarFlag;
 extern MOTORMACHINE gMotorMachine;
  /*******************************************************************************
     *
@@ -280,16 +278,16 @@ extern MOTORMACHINE gMotorMachine;
     
     void BSP_LEDCheck(void)
     {
-      if(gMotorMachine.GentleSensorFlag || gComingCarFlag)
+      if(gMotorMachine.GentleSensorFlag)
       {
-        BSP_ATMOSPHERELEDR_TOGGLE();
         BSP_ATMOSPHERELEDG_TOGGLE();
+        BSP_ATMOSPHERELEDR_TOGGLE();
         BSP_COMMUNICATIONLED_TORGGLE();
       }
       else
       {
-        BSP_ATMOSPHERELEDR_OFF();
         BSP_ATMOSPHERELEDG_ON();
+        BSP_ATMOSPHERELEDR_OFF();
         BSP_COMMUNICATIONLED_OFF();
       }
     }
