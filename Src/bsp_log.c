@@ -134,7 +134,7 @@
     tTempbuffer[1] = 0xD2;
     tTempbuffer[2] = 0x01;
     tTempbuffer[3] = 0x00;
-    tTempbuffer[4] = 0x18;
+    tTempbuffer[4] = 24;
     tTempbuffer[30] = 0x5D;
     
     for(i = 0; i < 24; i++)
@@ -142,7 +142,7 @@
       tTempbuffer[5 + i] = DoorBoardLogInfo[i];
     }
     
-    tTempbuffer[29] = getXORCode((tTempbuffer + 1), 29);
+    tTempbuffer[29] = getXORCode((tTempbuffer + 1), 28);
     
     status = BSP_SendDataToDriverBoard(tTempbuffer,31,0xFFFF);
     

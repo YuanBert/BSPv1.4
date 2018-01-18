@@ -153,6 +153,7 @@ int main(void)
   BSP_DriverBoardProtocolInit();
   BSP_RUNNINGLED_ON();
   BSP_DAC5571_Init(NormalOperationMode);
+  BSP_DAC5571_WriteValue(NormalOperationMode, 0x7F);
 
   /* USER CODE END 2 */
 
@@ -163,6 +164,12 @@ int main(void)
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
+    if(gTIM5LedFlag)
+    {
+      BSP_LEDCheck();
+      gTIM5LedFlag = 0;
+    }
+    
     BSP_MotorCheck();
     BSP_MotorAction();
     
@@ -190,13 +197,6 @@ int main(void)
       BSP_ReportLogInfo();
       gSendLogReportFlag = 0;
     }
-    
-    if(gTIM5LedFlag)
-    {
-      BSP_LEDCheck();
-      gTIM5LedFlag = 0;
-    }
-
   }
   /* USER CODE END 3 */
 
@@ -366,23 +366,27 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     
     gCtrlSpeedTimCnt++;
     gLogCnt ++;
+    gTIM5LedCnt ++ ;
+    
+    
     if(gCtrlSpeedTimCnt > 4)
     {
       gCtrlSpeedTimFlag = 1;
       gCtrlSpeedTimCnt = 0;
     }
     
-    gTIM5Cnt++;
-    if(0 == (gTIM5Cnt%250))
+
+    if(gTIM5LedCnt > 250)
     {
       gTIM5LedFlag = 1;
+      gTIM5LedCnt  = 0;
     }
     
-    if(gTIM5Cnt > 5000)
-    {
-      gTIM5CntFlag = 1;
-      gTIM5Cnt = 0;
-    }
+//    if(gTIM5Cnt > 5000)
+//    {
+//      gTIM5CntFlag = 1;
+//      gTIM5Cnt = 0;
+//    }
     
     if(gLogCnt > 15000)
     {
@@ -481,7 +485,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     if(gComingCarFlag)
     {
       gWaitCnt ++;
-      if(gWaitCnt > 100000)
+      if(gWaitCnt > 60000)
       {
         gWaitCnt = 0;
         gComingCarFlag = 0;
