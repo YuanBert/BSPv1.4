@@ -69,6 +69,10 @@ GPIOSTATUSDETECTION gGentleSensorStatusDetection;
 GPIOSTATUSDETECTION gRadarInputStatusGpio;
 GPIOSTATUSDETECTION gMCUAIRInputStatusGpio;
 
+uint32_t        gADCBuffer[20];
+uint32_t        gICurrentValue;
+uint32_t        gTempertureValue;
+
 uint8_t         gSendLogReportFlag;
 uint32_t        gLogCnt;
 
@@ -110,6 +114,7 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
+  uint8_t i;
 
   /* USER CODE END 1 */
 
@@ -147,8 +152,11 @@ int main(void)
   gRadarInputStatusGpio.GpioFilterCntSum  = 10;
   gMCUAIRInputStatusGpio.GpioFilterCntSum = 5;
   
+  
+  HAL_ADC_Start_DMA(&hadc1, (uint32_t*)&gADCBuffer,20);
   HAL_TIM_Base_Start_IT(&htim4);
   HAL_TIM_Base_Start_IT(&htim5);
+  
   BSP_MotorInit();
   BSP_DriverBoardProtocolInit();
   BSP_RUNNINGLED_ON();
@@ -166,6 +174,7 @@ int main(void)
     BSP_MotorCheck();
     BSP_MotorAction();
     
+    /* 电机调速 */
     if(gMotorMachine.RunningState && UPDIR == gMotorMachine.RunDir)
     {
       if(gCtrlSpeedTimFlag)
@@ -180,17 +189,32 @@ int main(void)
        BSP_DAC5571_WriteValue(NormalOperationMode, 0x9F);
     }
     
+    /* 命令处理 */
     BSP_HandingUartDataFromDriverBoard();
     BSP_HandingCmdFromDriverBoard(&gDriverBoardProtocolCmd);
+    if(gTIM5CntFlag)
+    {
+      for(i = 0; i < 20; )
+      {
+        gICurrentValue += gADCBuffer[i++];
+        gTempertureValue += gADCBuffer[i++];
+      }
+      gICurrentValue   /= 10;
+      gTempertureValue /= 10;
+      gTIM5CntFlag = 0;
+    }
     
+    /* 日志信息检测 */
     CheckStatus();
     
+    /* 日志信息上报 */
     if(gSendLogReportFlag)
     {
       BSP_ReportLogInfo();
       gSendLogReportFlag = 0;
     }
     
+    /* 氛围灯检测 */
     if(gTIM5LedFlag)
     {
       BSP_LEDCheck();
@@ -477,11 +501,11 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     }
     
     
-    //如果100s内车未通过，自动关闸
+    //如果60s内车未通过，自动关闸
     if(gComingCarFlag)
     {
       gWaitCnt ++;
-      if(gWaitCnt > 100000)
+      if(gWaitCnt > 60000)
       {
         gWaitCnt = 0;
         gComingCarFlag = 0;
@@ -494,6 +518,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 void CheckStatus(void)
 {
   BSP_UpDoorOpenSpeed(0x02);
+  BSP_UpCurrentPeak((uint16_t)gICurrentValue);
   BSP_UpMotorStatus(gMotorMachine.RunningState);
   BSP_UpGentleStatus(gMotorMachine.GentleSensorFlag);
   BSP_UpPressureWaveCondition(gMotorMachine.AirSensorFlag);
