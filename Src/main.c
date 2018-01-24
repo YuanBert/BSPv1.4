@@ -154,6 +154,7 @@ int main(void)
   
   
   HAL_ADC_Start_DMA(&hadc1, (uint32_t*)&gADCBuffer,20);
+  
   HAL_TIM_Base_Start_IT(&htim4);
   HAL_TIM_Base_Start_IT(&htim5);
   
@@ -192,6 +193,7 @@ int main(void)
     /* 命令处理 */
     BSP_HandingUartDataFromDriverBoard();
     BSP_HandingCmdFromDriverBoard(&gDriverBoardProtocolCmd);
+    
     if(gTIM5CntFlag)
     {
       for(i = 0; i < 20; )
@@ -392,7 +394,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     gLogCnt ++;
     if(gCtrlSpeedTimCnt > 4)
     {
-      gComingCarFlag = 1;
+      gCtrlSpeedTimFlag = 1;
       gCtrlSpeedTimCnt = 0;
     }
     
@@ -484,6 +486,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
       //车离开之后，清空标记位
       if(gGentleSensorStatusDetection.GpioStatusVal && gComingCarFlag)
       {
+        gWaitCnt = 0;
         gComingCarFlag = 0;
       }
       
